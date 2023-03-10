@@ -1,9 +1,13 @@
-import React from 'react'
+import React from "react";
+import Login from "./Login";
 
 const App = () => {
   return (
-    <div>howdy app</div>
-  )
-}
+    <div>
+      {/* <h1>howdy app</h1> */}
+      <Login />
+    </div>
+  );
+};
 
-export default App
+export default App;

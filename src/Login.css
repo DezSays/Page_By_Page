@@ -1,0 +1,20 @@
+.divider:after,
+.divider:before {
+  content: "";
+  flex: 1;
+  height: 1px;
+
+
+}
+body{
+  background-image: radial-gradient(circle, #aca9bb, #a29fb1, #9895a7, #8e8c9d, #848293, #7b798b, #726f82, #69667a, #5e5b71, #545168, #49475f, #3f3d56);
+}
+
+#formControlLg{
+  color: white
+}
+
+#h1-pbp{
+  text-align: center;
+  color: white;
+}

@@ -1,11 +1,12 @@
 import React from "react";
-import Login from "./Login";
+// import Login from "./Login";
+import Register from './Register'
 
 const App = () => {
   return (
     <div>
-      {/* <h1>howdy app</h1> */}
-      <Login />
+      {/* <Login /> */}
+      <Register />
     </div>
   );
 };

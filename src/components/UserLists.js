@@ -4,6 +4,7 @@ import Tabs from 'react-bootstrap/Tabs';
 import Favorites from './Favorites'
 import Read from './Read'
 import TBR from './TBR'
+import '../styles/UserLists.css'
 
 
 const UserLists = () => {

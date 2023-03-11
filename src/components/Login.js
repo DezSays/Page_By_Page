@@ -46,6 +46,8 @@ const Login = () => {
             Sign in
           </MDBBtn>
 
+          <p id='already-have-account'>Don't have an account?</p>
+
           <MDBBtn className="mb-4 w-100" size="lg">
             Create Account
           </MDBBtn>

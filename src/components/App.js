@@ -1,10 +1,11 @@
 import React from "react";
+import Footer from "./Footer";
 // import Home from "./Home";
 // import Login from "./Login";
 // import Register from './Register'
 // import UserLists from "./UserLists";
 // import Dashboard from "./Dashboard";
-import BookDetails from "./BookDetails";
+// import BookDetails from "./BookDetails";
 
 
 const App = () => {
@@ -15,7 +16,8 @@ const App = () => {
       {/* <UserLists /> */}
       {/* <Dashboard /> */}
       {/* <Home /> */}
-      <BookDetails />
+      {/* <BookDetails /> */}
+      <Footer />
     </div>
   );
 };

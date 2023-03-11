@@ -1,0 +1,20 @@
+.footer-container {
+    box-sizing: border-box;
+    width: 100%;
+    font: normal 250% sans-serif;
+    padding: 1%;
+    position: fixed;
+    bottom: 0;
+    background-color: rgb(119, 117, 134, 80%);
+    height: 5vh;
+    
+  }
+  
+  #score-text-container {
+    justify-content: center;
+  }
+  .icons{
+    color:white;
+    margin: 5px 10px;
+    padding-bottom:3%
+}

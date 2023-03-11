@@ -4,10 +4,16 @@ import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import './styles/index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import App from './components/App';
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 import reducer from "./reducers/reducer";
+import BaseLayout from './components/layout/BaseLayout';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import Home from './components/Home'
+import Login from './components/Login'
+import Register from './components/Register'
+import Dashboard from './components/Dashboard'
+// import BookDetails from './components/BookDetails'
 
 const store = createStore(
   reducer,
@@ -16,11 +22,21 @@ const store = createStore(
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <Provider store={store}>
     <React.StrictMode>
-      <App />
-    </React.StrictMode>
+  <Provider store={store}>
+  <Router>
+        <BaseLayout>
+          <Routes>
+            <Route path="/" element={<Login />}/>
+            <Route path='/home' element={<Home />}/>
+            <Route path='/register' element={<Register />}/>
+            <Route path='/dashboard' element={<Dashboard />}/>
+            {/* <Route path={'/books' + isbn} element={<BookDetails />}/> */}
+          </Routes>
+        </BaseLayout>
+      </Router>
   </Provider>
+    </React.StrictMode>
 );
 
 

@@ -8,7 +8,7 @@ const Dashboard = () => {
     <div id="container">
       <div id="top-div">
         <img
-          style={{ maxHeight: "50%", margin: "3%" }}
+          id="avatar-img"
           alt="user-avatar"
           src="../../user-avatar.png"
         />

@@ -7,7 +7,7 @@ import {
   MDBInput,
 } from "mdb-react-ui-kit";
 
-import "./styles/Login.css";
+import "../styles/Login.css";
 
 const Login = () => {
   return (

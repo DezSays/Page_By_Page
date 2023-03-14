@@ -1,22 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 
 
 
 const App = () => {
-
+  const [authors, setAuthors] = useState([])
   // /novel.{novel_id}
-  // const options = {
-  //   method: 'GET',
-  //   headers: {
-  //     'X-RapidAPI-Key': KEY,
-  //     'X-RapidAPI-Host': 'web-novel-api.p.rapidapi.com'
-  //   }
-  // };
+  const options = {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': 'KEY',
+      'X-RapidAPI-Host': 'web-novel-api.p.rapidapi.com'
+    }
+  };
   
-  // fetch('https://web-novel-api.p.rapidapi.com/novel/fa102782f605163ddc1b3341709fd70221b4e23b', options)
-  //   .then(response => response.json())
-  //   .then(response => console.log(response))
-  //   .catch(err => console.error(err));
+  fetch('https://web-novel-api.p.rapidapi.com/novel/fa102782f605163ddc1b3341709fd70221b4e23b', options)
+    .then(response => response.json())
+    .then(data => {
+      let authorFetch = data.novel.author
+      let authorsFormat = authorFetch.join(', ')
+      setAuthors(authorsFormat)
+    }
+    )
+    .catch(err => console.error(err));
 
 // * Notes on above fetch call. Data:
 // .novel.author[array]
@@ -44,7 +49,7 @@ const App = () => {
 // const options = {
 // 	method: 'GET',
 // 	headers: {
-// 		'X-RapidAPI-Key': KEY,
+// 		'X-RapidAPI-Key': 'KEY',
 // 		'X-RapidAPI-Host': 'web-novel-api.p.rapidapi.com'
 // 	}
 // };
@@ -65,7 +70,7 @@ const App = () => {
 // const options = {
 // 	method: 'GET',
 // 	headers: {
-// 		'X-RapidAPI-Key': KEY,
+// 		'X-RapidAPI-Key': 'KEY',
 // 		'X-RapidAPI-Host': 'web-novel-api.p.rapidapi.com'
 // 	}
 // };
@@ -97,7 +102,7 @@ const App = () => {
 // const options = {
 // 	method: 'GET',
 // 	headers: {
-// 		'X-RapidAPI-Key': KEY,
+// 		'X-RapidAPI-Key': 'KEY',
 // 		'X-RapidAPI-Host': 'web-novel-api.p.rapidapi.com'
 // 	}
 // };
@@ -124,7 +129,7 @@ const App = () => {
 // const options = {
 // 	method: 'GET',
 // 	headers: {
-// 		'X-RapidAPI-Key': KEY,
+// 		'X-RapidAPI-Key': 'KEY',
 // 		'X-RapidAPI-Host': 'web-novel-api.p.rapidapi.com'
 // 	}
 // };
@@ -145,7 +150,7 @@ const App = () => {
 // const options = {
 // 	method: 'GET',
 // 	headers: {
-// 		'X-RapidAPI-Key': KEY,
+// 		'X-RapidAPI-Key': 'KEY',
 // 		'X-RapidAPI-Host': 'web-novel-api.p.rapidapi.com'
 // 	}
 // };
@@ -169,7 +174,9 @@ const App = () => {
 
   return (
     <div>
-
+      <h1>
+        {authors}
+      </h1>
     </div>
   );
 };

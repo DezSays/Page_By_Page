@@ -14,6 +14,7 @@ import Login from './components/Login'
 import Register from './components/Register'
 import Dashboard from './components/Dashboard'
 // import BookDetails from './components/BookDetails'
+import App from './components/App';
 
 const store = createStore(
   reducer,
@@ -27,7 +28,7 @@ root.render(
   <Router>
         <BaseLayout>
           <Routes>
-            <Route path="/" element={<Login />}/>
+            <Route path="/" element={<App />}/>
             <Route path='/home' element={<Home />}/>
             <Route path='/register' element={<Register />}/>
             <Route path='/dashboard' element={<Dashboard />}/>

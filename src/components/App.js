@@ -4,7 +4,23 @@ import React, { useState } from "react";
 
 const App = () => {
   const [authors, setAuthors] = useState([])
+  const [totalChapters, setTotalChapters] = useState(0)
+  // const [cover, setCover] = useState('')
+  const [description, setDescription] = useState("")
+  const [genres, setGenres] = useState([])
+  const [novelID, setNovelID] = useState(0)
+  const [language, setLanguage] = useState("")
+  const [sources, setSources] = useState('')
+  const [rank, setRank] = useState(0)
+  const [rating, setRating] = useState(0)
+  const [amountOfRatings, setAmountOfRatings] = useState(0)
+  const [status, setStatus] = useState('')
+  const [title, setTitle] = useState('')
+
+
   // /novel.{novel_id}
+
+  const novelIDFunc = () => {
   const options = {
     method: 'GET',
     headers: {
@@ -16,33 +32,51 @@ const App = () => {
   fetch('https://web-novel-api.p.rapidapi.com/novel/fa102782f605163ddc1b3341709fd70221b4e23b', options)
     .then(response => response.json())
     .then(data => {
+      let tt = document.getElementById('test')
       let authorFetch = data.novel.author
       let authorsFormat = authorFetch.join(', ')
+      let totalChaptersData = data.novel.chapters.total
+      // let novelCover = "https://web-novel-api.p.rapidapi.com/"+data.novel.cover
+      let novelDescriptions = data.novel.description
+      let genreFetch = data.novel.genres
+      let genreFormat = genreFetch.join(', ')
+      let novID = data.novel.id 
+      let lang = data.novel.language 
+      let srcs = data.novel.sources 
+      let srcFormat = srcs.join(', ')
+      let rnk = data.novel.statistics.rank 
+      let rate = data.novel.statistics.rating
+      let numOfRatings = data.novel.statistics.ratings
+      let statusOf = data.novel.status 
+      let novelTitle = data.novel.title 
+      setTotalChapters(totalChaptersData)
+      // setCover(novelCover)
+      setDescription(novelDescriptions)
+      setGenres(genreFormat)
+      setNovelID(novID)
+      setLanguage(lang)
+      setSources(srcFormat)
+      setRank(rnk)
+      setRating(rate)
+      setAmountOfRatings(numOfRatings)
+      setStatus(statusOf)
+      setTitle(novelTitle)
+      tt.innerHTML = `${description}`
+
+      // .novel.statistics.views 
+      // .novel.tags[array]             keywords 
+      // let chapterListData = data.novel.chapters.list    //"/novel/fa102782f605163ddc1b3341709fd70221b4e23b/chapters"
+      // .novel.chapters.original       int
+
+
+
+
       setAuthors(authorsFormat)
+      
     }
     )
     .catch(err => console.error(err));
-
-// * Notes on above fetch call. Data:
-// .novel.author[array]
-// .novel.chapters.list           "/novel/fa102782f605163ddc1b3341709fd70221b4e23b/chapters"
-// .novel.chapters.original       int
-// .novel.chapters.total          int
-// .novel.cover
-// .novel.description
-// .novel.genres[array]
-// .novel.id
-// .novel.language
-// .novel.sources[array]
-// .novel.statistics.rank
-// .novel.statistics.rating       scale 1-10
-// .novel.statistics.ratings      number of ratings given 
-// .novel.statistics.views 
-// .novel.status                  if there will be more chapters or if it has been completed
-// .novel.title
-// .novel.tags[array]             keywords 
-
-
+  }
 
 
 // /genres
@@ -174,9 +208,46 @@ const App = () => {
 
   return (
     <div>
-      <h1>
-        {authors}
-      </h1>
+      <button onClick={novelIDFunc}>click to load</button>
+      <h2>
+        Authors: {authors}
+      </h2>
+      <h2>
+        Total Chapters: {totalChapters}
+      </h2>
+      <h2>
+        Description: {description}
+      </h2>
+      <h2>
+        Genres: {genres}
+      </h2>
+      <h2>
+        Novel ID: {novelID}
+      </h2>
+      <h2>
+        Language(s): {language}
+      </h2>
+      <h2>
+        Where to watch: {sources}
+      </h2>
+      <h2>
+        Rank: {rank}
+      </h2>
+      <h2>
+        Rating: {rating}
+      </h2>
+      <h2>
+        Total ratings given: {amountOfRatings}
+      </h2>
+      <h2>
+        Status: {status}
+      </h2>
+      <h2>
+        Title: {title}
+      </h2>
+      <div id='test'>
+
+      </div>
     </div>
   );
 };

@@ -10,10 +10,10 @@ import reducer from "./reducers/reducer";
 import BaseLayout from './components/layout/BaseLayout';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Home from './components/Home'
-import Login from './components/Login'
+// import Login from './components/Login'
 import Register from './components/Register'
 import Dashboard from './components/Dashboard'
-// import BookDetails from './components/BookDetails'
+import BookDetails from './components/BookDetails'
 import App from './components/App';
 
 const store = createStore(
@@ -32,7 +32,7 @@ root.render(
             <Route path='/home' element={<Home />}/>
             <Route path='/register' element={<Register />}/>
             <Route path='/dashboard' element={<Dashboard />}/>
-            {/* <Route path={'/books' + isbn} element={<BookDetails />}/> */}
+            <Route path={'/bookdetailstemp'} element={<BookDetails />}/>
           </Routes>
         </BaseLayout>
       </Router>

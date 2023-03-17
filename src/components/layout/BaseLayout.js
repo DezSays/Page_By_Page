@@ -2,14 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
-import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 
 const BaseLayout = (props) => {
   return (
     <>
-      <Navbar id='navbar-layout' bg="light" expand="lg">
+      <Navbar id="navbar-layout" bg="light" expand="lg">
         <Container fluid>
           <Navbar.Brand href="/">Page by Page</Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
@@ -19,24 +18,23 @@ const BaseLayout = (props) => {
               style={{ maxHeight: "100px" }}
               navbarScroll
             >
-              <Nav.Link><Link to="/">Login</Link></Nav.Link>
-              <Nav.Link><Link to="/register">Register</Link></Nav.Link>
-              <Nav.Link><Link to="/home">Home</Link></Nav.Link>
-              <Nav.Link><Link to="/dashboard">My Profile</Link></Nav.Link>
+              <Nav.Link>
+                <Link to="/">Login</Link>
+              </Nav.Link>
+              <Nav.Link>
+                <Link to="/register">Register</Link>
+              </Nav.Link>
+              <Nav.Link>
+                <Link to="/home">Home</Link>
+              </Nav.Link>
+              <Nav.Link>
+                <Link to="/dashboard">My Profile</Link>
+              </Nav.Link>
             </Nav>
-            <Form className="d-flex">
-              <Form.Control
-                type="search"
-                placeholder="Search"
-                className="me-2"
-                aria-label="Search"
-              />
-              <Button variant="outline-success">Search</Button>
-            </Form>
           </Navbar.Collapse>
+          <Button>Sign Out</Button>
         </Container>
       </Navbar>
-
 
       {props.children}
     </>

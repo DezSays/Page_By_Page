@@ -1,31 +1,38 @@
-import React from 'react'
-import Card from 'react-bootstrap/Card';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
+import React, { useState } from "react";
+import BookDetails from "./BookDetails";
 
 const Home = () => {
+  const [search, setSearch] = useState("");
+  const [bookList, setBookList] = useState([]);
+
+  const searchBook = (event) => {
+    if (event.key === "Enter") {
+      fetch(
+        `https://www.googleapis.com/books/v1/volumes?q=${search}&key=${apiKey}`
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          const items = data.items;
+          setBookList(items);
+        })
+        .catch((err) => console.log(err));
+    }
+  };
   return (
-    <div style={{padding:'5%'}}>
+    <>
+      <div className="search">
+        <input
+          type="text"
+          placeholder="Enter Your Book Name"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          onKeyPress={searchBook}
+        />
+        <button>Search</button>
+      </div>
 
-    <Row xs={1} md={3} className="g-4">
-      {Array.from({ length: 12 }).map((_, idx) => (
-        <Col>
-          <Card>
-            <Card.Img variant="top" src="holder.js/100px160" />
-            <Card.Body>
-              <Card.Title>Card title</Card.Title>
-              <Card.Text>
-                This is a longer card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
-              </Card.Text>
-            </Card.Body>
-          </Card>
-        </Col>
-      ))}
-    </Row>
-    </div>
+      <div className="container">{<BookDetails bookList={bookList} />}</div>
+    </>
   );
-}
-
-export default Home
+};
+export default Home;

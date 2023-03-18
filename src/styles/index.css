@@ -9,18 +9,60 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-#navbar-layout{
+
+#navbar-layout {
   z-index: 1;
-  position:static
+  position: static;
+}
+
+#card-description {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+#card-img {
+  height: 30vh;
+  max-width: 30vw;
+  object-fit: cover;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10%;
+}
+
+#card-title {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+#card-body {
+  height: 45vh;
+  word-wrap: break-word;
+}
+
+#selected-book-btn {
+  width: 80%;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 10%;
+}
+
+.card-text {
+  line-height: 12pt;
 }

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
 
 const BookDetails = ({ bookList }) => {
   const [show, setShow] = useState(false);
@@ -9,41 +10,38 @@ const BookDetails = ({ bookList }) => {
 
   return (
     <>
-      <Row xs={1} md={2} lg={3} xl={4} className="g-4">
+      <Row xs={1} md={2} lg={4} xl={6} className="g-4 ">
         {bookList.map((e) => {
           let thumbnail =
             e.volumeInfo.imageLinks && e.volumeInfo.imageLinks.smallThumbnail;
+            // str.split('').join(' ');
+            let authors = e.volumeInfo.authors
+            let authorsStr = authors.toString()
+            let authorsFormat = authorsStr.split('').join('')
 
           if (thumbnail !== undefined) {
             return (
               <>
-                <div
-                  onClick={() => {
-                    setShow(true);
-                    setBook(e);
-                  }}
-                >
-                  <Col>
+                <Col>
+                  <div
+                    onClick={() => {
+                      setShow(true);
+                      setBook(e);
+                    }}
+                  >
                     <Card className="text-center">
-                      <Card.Img variant="top" src={thumbnail} />
-                      <Card.Body>
-                        <Card.Title>{e.volumeInfo.title}</Card.Title>
-                        <Card.Text>{e.volumeInfo.description}</Card.Text>
-                        <Card.Text>
-                          Publisher: {e.volumeInfo.publisher},{" "}
-                          {e.volumeInfo.publishedDate}
-                        </Card.Text>
-                        <Card.Text>Pages: {e.volumeInfo.pageCount}</Card.Text>
-                        <Card.Text>Author(s): {e.volumeInfo.authors}</Card.Text>
-                        <Card.Text>Genre: {e.volumeInfo.categories}</Card.Text>
-                        <Card.Text>
-                          Rating: {e.volumeInfo.averageRating}
-                        </Card.Text>
-                        <Card.Text>Book URL: {e.selfLink}</Card.Text>
+                      <Card.Img variant="top" id="card-img" src={thumbnail}  />
+                      <Card.Body id="card-body">
+                        <Card.Title id="card-title">{e.volumeInfo.title}</Card.Title>
+                        <Card.Text id="card-description">{e.volumeInfo.description}</Card.Text>
+                        <Card.Text >Author(s): {authorsFormat}</Card.Text>
+                        <Card.Text >Genre: {e.volumeInfo.categories}</Card.Text>
+                      
+                        <Button id="selected-book-btn">Book URL: {e.selfLink}</Button>
                       </Card.Body>
                     </Card>
-                  </Col>
-                </div>
+                  </div>
+                </Col>
               </>
             );
           }

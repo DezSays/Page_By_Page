@@ -5,6 +5,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
+
 const BookDetails = ({ bookList }) => {
   const [show, setShow] = useState(false);
   const [book, setBook] = useState("");
@@ -40,6 +41,9 @@ const BookDetails = ({ bookList }) => {
     setDescription(descript);
     setDisplay(2);
   };
+  const test = (e) => {
+    console.log(e.target.value)
+  }
 
   return (
     <>
@@ -109,7 +113,9 @@ const BookDetails = ({ bookList }) => {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary">Understood</Button>
+          <Button variant="primary" value={title} onClick={test}>TBR</Button>
+          <Button variant="primary" value={title}>Already Read</Button>
+          <Button variant="primary" value={title}>Favs</Button>
         </Modal.Footer>
       </Modal>
     </>

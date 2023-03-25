@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import {
   MDBContainer,
   MDBCol,
@@ -10,6 +11,38 @@ import {
 import "../styles/Login.css";
 
 const Login = () => {
+  const navigate = useNavigate()
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('')
+  const [isError, setIsError] = useState(false)
+  const handleSubmit = async (e) => {
+    console.log('first')
+    e.preventDefault();
+    const result = await fetch('http://localhost:3001/api/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email,
+          password: password
+        }),
+    });
+    if (result.status === 403) {
+        setIsError(true)
+        return 
+    };
+    return await result.json()
+            .then((data) => {
+                setEmail("");
+                setPassword("");
+                navigate('/')
+            })
+            .catch((error) => {
+                setIsError(true)
+                return
+            });
+    }
   return (
     <MDBContainer fluid className="p-3 my-5">
       <MDBRow>
@@ -24,28 +57,34 @@ const Login = () => {
         <MDBCol col="4" md="6">
           <h1 id="h1-pbp">Page by Page</h1>
           <br />
+          <form onSubmit={handleSubmit}>
+
 
           <MDBInput
-            wrapperClass="mb-4"
-            contrast
-            label="Email"
-            id="formControlLg"
-            type="email"
-            size="lg"
+          onChange={(event) => setEmail(event.target.value)}
+          wrapperClass="mb-4"
+          contrast
+          label="Email"
+          id="formControlLg"
+          type="email"
+          size="lg"
           />
           <MDBInput
-            wrapperClass="mb-4"
-            contrast
-            label="Password"
-            id="formControlLg"
-            type="password"
-            size="lg"
+          onChange={(event) => setPassword(event.target.value)}
+          wrapperClass="mb-4"
+          contrast
+          label="Password"
+          id="formControlLg"
+          type="password"
+          size="lg"
           />
 
-          <MDBBtn className="mb-4 w-100" size="lg">
+          <MDBBtn type='submit' className="mb-4 w-100" size="lg">
             Sign in
           </MDBBtn>
 
+          </form>
+          {isError ? <h4>Unable to login.</h4> : null} 
           <p id='already-have-account'>Don't have an account?</p>
 
           <MDBBtn className="mb-4 w-100" size="lg">

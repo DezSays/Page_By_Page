@@ -1,46 +1,19 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 require("dotenv").config();
 const { Sequelize } = require("sequelize");
-const { books, users } = require("./models");
+const { users } = require("./models");
 const db = process.env.DB;
 const sequelize = new Sequelize(`${db}`);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", async (req, res) => {
-  const bookshelf = await books.findAll();
-  console.log(bookshelf);
-  res.send(bookshelf);
-});
 
-app.post("/", async (req, res) => {
-  await books.create({
-    title: req.body.title,
-    description: req.body.description,
-    edition: req.body.edition,
-    isbn: req.body.isbn,
-    author: req.body.author,
-    pages: req.body.pages,
-    rating: req.body.rating,
-    reviews: req.body.reviews,
-  });
-  let newBook = await books.findAll({
-    where: {
-      title: req.body.title,
-      author: req.body.author,
-      edition: req.body.edition,
-      isbn: req.body.isbn,
-      rating: req.body.rating,
-    },
-  });
-  res.send(newBook);
-});
 
-app.put("/dashboard/:username", async (req, res) => {
+app.put("/api/dashboard/:username", async (req, res) => {
   let username = req.params.username;
   let updatedUsername = req.body.username;
   let updatedFirstName = req.body.firstName;
@@ -58,20 +31,20 @@ app.put("/dashboard/:username", async (req, res) => {
     },
     {
       where: {
-        username: username,
+        email: email
       },
     }
   );
   res.json("Your account has been updated!");
 });
 
-app.delete("/dashboard/:username", async (req, res) => {
+app.delete("/api/dashboard/:username", async (req, res) => {
   let username = req.params.username;
   await users.destroy({ where: { username: username } });
   res.json("User successfully deleted.");
 });
 
-app.post("/register", async (req, res) => {
+app.post("/api/register", async (req, res) => {
   let { firstName, lastName, username, email, password } = req.body;
 
   try {
@@ -89,7 +62,7 @@ app.post("/register", async (req, res) => {
   }
 });
 
-app.post("/login", async (req, res) => {
+app.post("/api/login", async (req, res) => {
   try {
     let { email, password } = req.body;
 

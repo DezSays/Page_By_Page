@@ -7,16 +7,25 @@ import {
   MDBBtn,
   MDBInput,
 } from "mdb-react-ui-kit";
+import alterID from "../actions/alterID";
+import { useDispatch } from "react-redux";
+
 
 import "../styles/Login.css";
 
 const Login = () => {
+
+  const dispatch = useDispatch();
   const navigate = useNavigate()
+
+  const handleClick = () => {
+    navigate('/')
+  }
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('')
   const [isError, setIsError] = useState(false)
+
   const handleSubmit = async (e) => {
-    console.log('first')
     e.preventDefault();
     const result = await fetch('http://localhost:3001/api/login', {
         method: 'POST',
@@ -28,17 +37,16 @@ const Login = () => {
           password: password
         }),
     });
-    if (result.status === 403) {
-        setIsError(true)
-        return 
-    };
-    return await result.json()
-            .then((data) => {
+    await result.json()
+    .then((data) => {
+      dispatch(alterID(data.id))
+      console.log(data.id)
                 setEmail("");
                 setPassword("");
-                navigate('/')
+                navigate('/home')
             })
             .catch((error) => {
+              console.log(error)
                 setIsError(true)
                 return
             });
@@ -87,7 +95,7 @@ const Login = () => {
           {isError ? <h4>Unable to login.</h4> : null} 
           <p id='already-have-account'>Don't have an account?</p>
 
-          <MDBBtn className="mb-4 w-100" size="lg">
+          <MDBBtn onClick={handleClick} className="mb-4 w-100" size="lg">
             Create Account
           </MDBBtn>
         </MDBCol>

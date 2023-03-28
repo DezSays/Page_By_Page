@@ -4,6 +4,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import { useSelector } from "react-redux";
 
 
 const BookDetails = ({ bookList }) => {
@@ -17,7 +18,8 @@ const BookDetails = ({ bookList }) => {
   const [display, setDisplay] = useState(0);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
+  const userID = useSelector(state => state.userID)
+console.log(userID)
   useEffect(() => {
     fetchBook();
   }, [display]);
@@ -41,12 +43,58 @@ const BookDetails = ({ bookList }) => {
     setDescription(descript);
     setDisplay(2);
   };
-  const test = (e) => {
+  const addTBR = (e) => {
     console.log(e.target.value)
   }
 
+
+
+
+
+
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   const result = await fetch("http://localhost:3001/register", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       username: userName,
+  //       password: password,
+  //       firstName: firstName,
+  //       lastName: lastName,
+  //       email: email,
+  //     }),
+  //   });
+  //   if (result.status === 403) {
+  //     setIsError(true);
+  //     return;
+  //   }
+  //   return await result
+  //     .json()
+  //     .then((data) => {
+  //       setUserName("");
+  //       setPassword("");
+  //       navigate("/login");
+  //     })
+  //     .catch((error) => {
+  //       setIsError(true);
+  //       return;
+  //     });
+  // };
+
+
+
+
+
+
+
+
   return (
     <>
+    <h1>{userID}</h1>
       <Row xs={1} md={2} lg={4} xl={6} className="g-4 ">
         {bookList.map((e) => {
           let thumbnail =
@@ -113,7 +161,7 @@ const BookDetails = ({ bookList }) => {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" value={title} onClick={test}>TBR</Button>
+          <Button variant="primary" value={title} onClick={addTBR}>TBR</Button>
           <Button variant="primary" value={title}>Already Read</Button>
           <Button variant="primary" value={title}>Favs</Button>
         </Modal.Footer>

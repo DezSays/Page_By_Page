@@ -19,10 +19,10 @@ const BaseLayout = (props) => {
               navbarScroll
             >
               <Nav.Link>
-                <Link to="/">Login</Link>
+                <Link to="/">Register</Link>
               </Nav.Link>
               <Nav.Link>
-                <Link to="/register">Register</Link>
+                <Link to="/login">Login</Link>
               </Nav.Link>
               <Nav.Link>
                 <Link to="/home">Home</Link>

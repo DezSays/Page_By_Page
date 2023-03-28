@@ -38,6 +38,26 @@ app.put("/api/dashboard/:username", async (req, res) => {
   res.json("Your account has been updated!");
 });
 
+
+
+app.put("/api/tbr", async (req, res) => {
+
+  let updatedTBR = req.body.tbr;
+  let userID = req.body.userID
+
+  await users.update(
+    {
+      tbr: updatedTBR
+    },
+    {
+      where: {
+        id: userID
+      },
+    }
+  );
+  res.json("Added to your to be read list successfully!");
+});
+
 app.delete("/api/dashboard/:username", async (req, res) => {
   let username = req.params.username;
   await users.destroy({ where: { username: username } });
@@ -72,7 +92,9 @@ app.post("/api/login", async (req, res) => {
 
     if (result) {
       console.log("Passwords Match!");
-      res.redirect("/");
+      let userID = user.dataValues.id
+      res.send({id: userID})
+      // res.redirect("http://localhost:3000/home");
     } else {
       // password is incorrect
       //       res.render('login', {message: 'Incorrect username or password'});

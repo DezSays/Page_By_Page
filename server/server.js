@@ -11,8 +11,6 @@ const sequelize = new Sequelize(`${db}`);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-
-
 app.put("/api/dashboard/:username", async (req, res) => {
   let username = req.params.username;
   let updatedUsername = req.body.username;
@@ -31,31 +29,134 @@ app.put("/api/dashboard/:username", async (req, res) => {
     },
     {
       where: {
-        email: email
+        email: email,
       },
     }
   );
   res.json("Your account has been updated!");
 });
 
-
-
 app.put("/api/tbr", async (req, res) => {
-
+  let updatedUserID = req.body.id;
   let updatedTBR = req.body.tbr;
-  let userID = req.body.userID
+  let preview = req.body.preview;
+  let thumbnail = req.body.thumbnail;
 
-  await users.update(
-    {
-      tbr: updatedTBR
+  let selectedAcct = await users.findOne({
+    where: {
+      id: updatedUserID,
     },
-    {
-      where: {
-        id: userID
+  });
+
+  let newTBRList = selectedAcct.dataValues.tbr;
+  if (newTBRList == null) {
+    newTBRList = [];
+    newTBRList.push(updatedTBR, preview, thumbnail);
+  }
+
+  if (!newTBRList.includes(updatedTBR)) {
+    newTBRList.push(updatedTBR, preview, thumbnail);
+  } else {
+    console.log("Already in list :D");
+  }
+  try {
+    let updatedList = await users.update(
+      {
+        tbr: newTBRList,
       },
-    }
-  );
-  res.json("Added to your to be read list successfully!");
+      {
+        where: {
+          id: updatedUserID,
+        },
+      }
+    );
+    res.send(updatedList);
+  } catch (err) {
+    console.log(err);
+    res.json("in the put catch of /api/tbr");
+  }
+});
+
+app.put("/api/read", async (req, res) => {
+  let updatedUserID = req.body.id;
+  let updatedREAD = req.body.read;
+  let preview = req.body.preview;
+  let thumbnail = req.body.thumbnail;
+
+  let selectedAcct = await users.findOne({
+    where: {
+      id: updatedUserID,
+    },
+  });
+
+  let newREADList = selectedAcct.dataValues.read;
+  if (newREADList == null) {
+    newREADList = [];
+    newREADList.push(updatedREAD, preview, thumbnail);
+  }
+
+  if (!newREADList.includes(updatedREAD)) {
+    newREADList.push(updatedREAD, preview, thumbnail);
+  } else {
+    console.log("Already in list :D");
+  }
+  try {
+    let updatedList = await users.update(
+      {
+        read: newREADList,
+      },
+      {
+        where: {
+          id: updatedUserID,
+        },
+      }
+    );
+    res.send(updatedList);
+  } catch (err) {
+    console.log(err);
+    res.json("in the put catch of /api/read");
+  }
+});
+
+app.put("/api/favorite", async (req, res) => {
+  let updatedUserID = req.body.id;
+  let updatedFAV = req.body.favorite;
+  let preview = req.body.preview;
+  let thumbnail = req.body.thumbnail;
+
+  let selectedAcct = await users.findOne({
+    where: {
+      id: updatedUserID,
+    },
+  });
+
+  let newFAVList = selectedAcct.dataValues.favorite;
+  if (newFAVList == null) {
+    newFAVList = [];
+    newFAVList.push(updatedFAV, preview, thumbnail);
+  }
+
+  if (!newFAVList.includes(updatedFAV)) {
+    newFAVList.push(updatedFAV, preview, thumbnail);
+  } else {
+    console.log("Already in list :D");
+  }
+  try {
+    let updatedList = await users.update(
+      {
+        favorite: newFAVList,
+      },
+      {
+        where: {
+          id: updatedUserID,
+        },
+      }
+    );
+    res.send(updatedList);
+  } catch (err) {
+    console.log(err);
+    res.json("in the put catch of /api/tbr");
+  }
 });
 
 app.delete("/api/dashboard/:username", async (req, res) => {
@@ -92,8 +193,8 @@ app.post("/api/login", async (req, res) => {
 
     if (result) {
       console.log("Passwords Match!");
-      let userID = user.dataValues.id
-      res.send({id: userID})
+      let userID = user.dataValues.id;
+      res.send({ id: userID });
       // res.redirect("http://localhost:3000/home");
     } else {
       // password is incorrect

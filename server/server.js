@@ -36,6 +36,28 @@ app.put("/api/dashboard/:username", async (req, res) => {
   res.json("Your account has been updated!");
 });
 
+app.get("/api/tbrList", async (req, res) => {
+  let updatedUserID = req.headers.id
+  console.log(updatedUserID)
+  try{
+
+    const userLoggedIn = await users.findOne({
+      where: {
+        id: updatedUserID
+      }
+    })
+    if(userLoggedIn.dataValues !== null && users.id !== 0){
+      res.send(userLoggedIn.dataValues.tbr)
+    }
+    else{
+      console.log('dataValues null')
+    }
+  }
+  catch(error){
+    console.log(error)
+  }
+})
+
 app.put("/api/tbr", async (req, res) => {
   let updatedUserID = req.body.id;
   let updatedTBR = req.body.tbr;
@@ -47,8 +69,11 @@ app.put("/api/tbr", async (req, res) => {
       id: updatedUserID,
     },
   });
-
-  let newTBRList = selectedAcct.dataValues.tbr;
+  
+  let newTBRList = ''
+  if(selectedAcct.dataValues !== null){
+  newTBRList = selectedAcct.dataValues.tbr;
+  }
   if (newTBRList == null) {
     newTBRList = [];
     newTBRList.push(updatedTBR, preview, thumbnail);

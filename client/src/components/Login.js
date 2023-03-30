@@ -11,6 +11,7 @@ import alterID from "../actions/alterID";
 import { useDispatch } from "react-redux";
 
 
+
 import "../styles/Login.css";
 
 const Login = () => {
@@ -27,7 +28,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const result = await fetch('http://localhost:3001/api/login', {
+    const result = await fetch('/api/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

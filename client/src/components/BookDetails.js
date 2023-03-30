@@ -16,10 +16,15 @@ const BookDetails = ({ bookList }) => {
   const [thumbnail, setThumbnail] = useState("");
   const [description, setDescription] = useState("");
   const [display, setDisplay] = useState(0);
+  const [tbr, setTbr] = useState('')
+  const [userID, setUserID] = useState(Number)
+  const [preview, setPreview] = useState('')
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const userID = useSelector(state => state.userID)
-console.log(userID)
+  const userIDs = useSelector(state => state.userID)
+
+  
+
   useEffect(() => {
     fetchBook();
   }, [display]);
@@ -30,8 +35,11 @@ console.log(userID)
     handleShow();
   };
   const fetchBook = async () => {
+    setUserID(userIDs)
+    console.log(userID)
     const bookFetch = await fetch(`${bookURL}`);
     const book = await bookFetch.json();
+    setPreview(book.volumeInfo.previewLink)
     setTitle(book.volumeInfo.title);
     setAuthors(book.volumeInfo.authors);
     let img =
@@ -43,65 +51,45 @@ console.log(userID)
     setDescription(descript);
     setDisplay(2);
   };
-  const addTBR = (e) => {
-    console.log(e.target.value)
+  const addTBR = async (e) => {
+    setTbr(e.target.value)
+    e.preventDefault();
+    const result = await fetch("/api/tbr", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id: userID,
+        tbr: title,
+        preview: preview,
+        thumbnail:thumbnail
+      }),
+    });
+    
+    await result.json()
+    .then((data) => {
+                console.log(data)
+            })
+            .catch((error) => {
+              console.log(error)
+                return
+            });
   }
-
-
-
-
-
-
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   const result = await fetch("http://localhost:3001/register", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({
-  //       username: userName,
-  //       password: password,
-  //       firstName: firstName,
-  //       lastName: lastName,
-  //       email: email,
-  //     }),
-  //   });
-  //   if (result.status === 403) {
-  //     setIsError(true);
-  //     return;
-  //   }
-  //   return await result
-  //     .json()
-  //     .then((data) => {
-  //       setUserName("");
-  //       setPassword("");
-  //       navigate("/login");
-  //     })
-  //     .catch((error) => {
-  //       setIsError(true);
-  //       return;
-  //     });
-  // };
-
-
-
-
-
-
 
 
   return (
     <>
-    <h1>{userID}</h1>
       <Row xs={1} md={2} lg={4} xl={6} className="g-4 ">
         {bookList.map((e) => {
           let thumbnail =
             e.volumeInfo.imageLinks && e.volumeInfo.imageLinks.smallThumbnail;
 
           let authors = e.volumeInfo.authors;
-          let authorsStr = authors.toString();
+          let authorsStr = ''
+          if(typeof(authors) === Array){
+            authorsStr = authors.toString();
+          }
           let authorsFormat = authorsStr.split("").join("");
 
           if (thumbnail !== undefined) {
@@ -161,11 +149,13 @@ console.log(userID)
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" value={title} onClick={addTBR}>TBR</Button>
+          <Button variant="primary" value={title} id={tbr} onClick={addTBR}>TBR</Button>
           <Button variant="primary" value={title}>Already Read</Button>
           <Button variant="primary" value={title}>Favs</Button>
         </Modal.Footer>
       </Modal>
+      <p id={userID}></p>
+      <p id={preview}></p>
     </>
   );
 };

@@ -36,27 +36,26 @@ app.put("/api/dashboard/:username", async (req, res) => {
   res.json("Your account has been updated!");
 });
 
+
 app.get("/api/tbrList", async (req, res) => {
   let updatedUserID = req.headers.id
-  console.log(updatedUserID)
+  console.log('42', req.headers)
+  console.log("43",updatedUserID)
+  console.log('44', req.body)
   try{
-
     const userLoggedIn = await users.findOne({
       where: {
         id: updatedUserID
       }
     })
-    if(userLoggedIn.dataValues !== null && users.id !== 0){
       res.send(userLoggedIn.dataValues.tbr)
-    }
-    else{
-      console.log('dataValues null')
-    }
   }
   catch(error){
     console.log(error)
   }
 })
+
+
 
 app.put("/api/tbr", async (req, res) => {
   let updatedUserID = req.body.id;
@@ -220,16 +219,13 @@ app.post("/api/login", async (req, res) => {
       console.log("Passwords Match!");
       let userID = user.dataValues.id;
       res.send({ id: userID });
-      // res.redirect("http://localhost:3000/home");
+
     } else {
-      // password is incorrect
-      //       res.render('login', {message: 'Incorrect username or password'});
       console.log("Incorrect username or password");
       res.json("Incorrect username or password");
     }
   } catch (error) {
     console.log(error);
-    //   res.render('login', {message: 'An error has occurred'});
     res.json(error);
   }
 });

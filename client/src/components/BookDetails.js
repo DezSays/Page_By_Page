@@ -36,7 +36,6 @@ const BookDetails = ({ bookList }) => {
   };
   const fetchBook = async () => {
     setUserID(userIDs)
-    console.log(userID)
     const bookFetch = await fetch(`${bookURL}`);
     const book = await bookFetch.json();
     setPreview(book.volumeInfo.previewLink)

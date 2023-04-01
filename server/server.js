@@ -37,18 +37,17 @@ app.put("/api/dashboard/:username", async (req, res) => {
 });
 
 
-app.get("/api/tbrList", async (req, res) => {
+app.post("/api/tbrList", async (req, res) => {
   let updatedUserID = req.headers.id
   console.log('42', req.headers)
   console.log("43",updatedUserID)
-  console.log('44', req.body)
   try{
-    const userLoggedIn = await users.findOne({
-      where: {
-        id: updatedUserID
-      }
-    })
-      res.send(userLoggedIn.dataValues.tbr)
+      const userLoggedIn = await users.findOne({
+        where: {
+          id: updatedUserID
+        }
+      })
+        res.send(userLoggedIn.dataValues.tbr)
   }
   catch(error){
     console.log(error)
@@ -101,93 +100,93 @@ app.put("/api/tbr", async (req, res) => {
   }
 });
 
-app.put("/api/read", async (req, res) => {
-  let updatedUserID = req.body.id;
-  let updatedREAD = req.body.read;
-  let preview = req.body.preview;
-  let thumbnail = req.body.thumbnail;
+// app.put("/api/read", async (req, res) => {
+//   let updatedUserID = req.body.id;
+//   let updatedREAD = req.body.read;
+//   let preview = req.body.preview;
+//   let thumbnail = req.body.thumbnail;
 
-  let selectedAcct = await users.findOne({
-    where: {
-      id: updatedUserID,
-    },
-  });
+//   let selectedAcct = await users.findOne({
+//     where: {
+//       id: updatedUserID,
+//     },
+//   });
 
-  let newREADList = selectedAcct.dataValues.read;
-  if (newREADList == null) {
-    newREADList = [];
-    newREADList.push(updatedREAD, preview, thumbnail);
-  }
+//   let newREADList = selectedAcct.dataValues.read;
+//   if (newREADList == null) {
+//     newREADList = [];
+//     newREADList.push(updatedREAD, preview, thumbnail);
+//   }
 
-  if (!newREADList.includes(updatedREAD)) {
-    newREADList.push(updatedREAD, preview, thumbnail);
-  } else {
-    console.log("Already in list :D");
-  }
-  try {
-    let updatedList = await users.update(
-      {
-        read: newREADList,
-      },
-      {
-        where: {
-          id: updatedUserID,
-        },
-      }
-    );
-    res.send(updatedList);
-  } catch (err) {
-    console.log(err);
-    res.json("in the put catch of /api/read");
-  }
-});
+//   if (!newREADList.includes(updatedREAD)) {
+//     newREADList.push(updatedREAD, preview, thumbnail);
+//   } else {
+//     console.log("Already in list :D");
+//   }
+//   try {
+//     let updatedList = await users.update(
+//       {
+//         read: newREADList,
+//       },
+//       {
+//         where: {
+//           id: updatedUserID,
+//         },
+//       }
+//     );
+//     res.send(updatedList);
+//   } catch (err) {
+//     console.log(err);
+//     res.json("in the put catch of /api/read");
+//   }
+// });
 
-app.put("/api/favorite", async (req, res) => {
-  let updatedUserID = req.body.id;
-  let updatedFAV = req.body.favorite;
-  let preview = req.body.preview;
-  let thumbnail = req.body.thumbnail;
+// app.put("/api/favorite", async (req, res) => {
+//   let updatedUserID = req.body.id;
+//   let updatedFAV = req.body.favorite;
+//   let preview = req.body.preview;
+//   let thumbnail = req.body.thumbnail;
 
-  let selectedAcct = await users.findOne({
-    where: {
-      id: updatedUserID,
-    },
-  });
+//   let selectedAcct = await users.findOne({
+//     where: {
+//       id: updatedUserID,
+//     },
+//   });
 
-  let newFAVList = selectedAcct.dataValues.favorite;
-  if (newFAVList == null) {
-    newFAVList = [];
-    newFAVList.push(updatedFAV, preview, thumbnail);
-  }
+//   let newFAVList = selectedAcct.dataValues.favorite;
+//   if (newFAVList == null) {
+//     newFAVList = [];
+//     newFAVList.push(updatedFAV, preview, thumbnail);
+//   }
 
-  if (!newFAVList.includes(updatedFAV)) {
-    newFAVList.push(updatedFAV, preview, thumbnail);
-  } else {
-    console.log("Already in list :D");
-  }
-  try {
-    let updatedList = await users.update(
-      {
-        favorite: newFAVList,
-      },
-      {
-        where: {
-          id: updatedUserID,
-        },
-      }
-    );
-    res.send(updatedList);
-  } catch (err) {
-    console.log(err);
-    res.json("in the put catch of /api/tbr");
-  }
-});
+//   if (!newFAVList.includes(updatedFAV)) {
+//     newFAVList.push(updatedFAV, preview, thumbnail);
+//   } else {
+//     console.log("Already in list :D");
+//   }
+//   try {
+//     let updatedList = await users.update(
+//       {
+//         favorite: newFAVList,
+//       },
+//       {
+//         where: {
+//           id: updatedUserID,
+//         },
+//       }
+//     );
+//     res.send(updatedList);
+//   } catch (err) {
+//     console.log(err);
+//     res.json("in the put catch of /api/tbr");
+//   }
+// });
 
-app.delete("/api/dashboard/:username", async (req, res) => {
-  let username = req.params.username;
-  await users.destroy({ where: { username: username } });
-  res.json("User successfully deleted.");
-});
+// app.delete("/api/dashboard/:username", async (req, res) => {
+//   let username = req.params.username;
+//   await users.destroy({ where: { username: username } });
+//   res.json("User successfully deleted.");
+// });
 
 app.post("/api/register", async (req, res) => {
   let { firstName, lastName, username, email, password } = req.body;

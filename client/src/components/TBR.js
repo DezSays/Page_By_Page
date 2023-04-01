@@ -12,20 +12,18 @@ const TBR = () => {
 
   useEffect(() => {
     tbrFetch()
-  
   }, [userIDs])
   
-
   const tbrFetch = async () => {
     setUserID(userIDs);
     const result = await fetch("/api/tbrList", {
-      method: "GET",
+      method: "POST",
       headers: {
         id: userID,
         "Content-Type": "application/json",
       },
     });
-    await result
+    result
       .json()
       .then((data) => {
         setTbrList(data);
@@ -42,10 +40,10 @@ const TBR = () => {
     setTbrFormat(slicedArr);
   };
 
+
   return (
     <div>
-      <button onClick={tbrFetch}>click</button>
-
+      <div onMouseOver={tbrFetch}>Mouse over to load TBR list</div>
       <Row>
         {tbrFormat.map((e) => {
           return (

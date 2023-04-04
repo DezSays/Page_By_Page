@@ -3,6 +3,7 @@ import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import { useSelector } from "react-redux";
+import '../styles/UserLists.css'
 
 const TBR = () => {
   const [tbrList, setTbrList] = useState([]);
@@ -19,7 +20,7 @@ const TBR = () => {
     const result = await fetch("/api/tbrList", {
       method: "POST",
       headers: {
-        id: userID,
+        id: 8,
         "Content-Type": "application/json",
       },
     });
@@ -44,16 +45,16 @@ const TBR = () => {
   return (
     <div>
       <div onMouseOver={tbrFetch}>Mouse over to load TBR list</div>
-      <Row>
+      <Row xs={2} sm={4} md={5} lg={6} xl={8} xxl={10} id="tbr-row">
         {tbrFormat.map((e) => {
           return (
-            <Col>
-              <Card>
-                <Card.Img variant="top" src={e[2]} />
+            <Col id="tbr-col">
+              <Card id="tbr-card">
+                <Card.Img className="mx-auto" id="tbr-card-img" variant="top" src={e[2]} />
                 <Card.Body>
-                  <Card.Title>{e[0]}</Card.Title>
+                  <Card.Title id="tbr-card-title">{e[0]}</Card.Title>
                   <Card.Text>
-                    <button>
+                    <button id="tbr-card-btn">
                       <a href={e[1]} target="_blank" rel="noreferrer">
                         Preview Book
                       </a>

@@ -1,26 +1,25 @@
-#user-list-row{
-    padding: 5%;
-    max-width:100%
+#user-list-row {
+  padding: 5%;
+  max-width: 100%;
 }
 
-#tbr-col{
-    padding: 1.5%;
-}
-#tbr-row{
-    padding: 5%;
-    
+#tbr-col {
+  padding: 1.5%;
 }
 
-#tbr-card-title{
-    font-size: 90%;
-}
-#tbr-card-btn{
-    font-size: 80%;
+#tbr-row {
+  padding: 5%;
 }
 
+#tbr-card-title {
+  font-size: 90%;
+}
 
-#tbr-card-img{
-width:70%;
-height:35vh;
+#tbr-card-btn {
+  font-size: 80%;
+}
 
+#tbr-card-img {
+  width: 70%;
+  height: 35vh;
 }

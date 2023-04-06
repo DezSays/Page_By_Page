@@ -96,6 +96,42 @@ app.put("/api/tbr", async (req, res) => {
   }
 });
 
+app.put("/api/tbr/remove", async (req, res) => {
+  let updatedUserID = req.body.id;
+  let updatedTBR = req.body.tbr;
+  let selectedAcct = await users.findOne({
+    where: {
+      id: updatedUserID,
+    },
+  });
+  let newTBRList = "";
+  if (selectedAcct.dataValues !== null) {
+    newTBRList = selectedAcct.dataValues.tbr;
+    if (newTBRList.includes(updatedTBR)) {
+      const bookList = newTBRList.indexOf(updatedTBR);
+      if (bookList > -1) {
+        newTBRList.splice(bookList, 3);
+      }
+    }
+  }
+  try {
+    let updatedList = await users.update(
+      {
+        tbr: newTBRList,
+      },
+      {
+        where: {
+          id: updatedUserID,
+        },
+      }
+    );
+    res.send(updatedList);
+  } catch (err) {
+    console.log(err);
+    res.json("in the put catch of /api/tbr/remove");
+  }
+});
+
 app.delete("/api/user/delete", async (req, res) => {
   let userID = req.body.id;
   await users.destroy({ where: { id: userID } });

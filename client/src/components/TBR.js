@@ -12,15 +12,15 @@ const TBR = () => {
   const [tbrFormat, setTbrFormat] = useState([]);
 
   useEffect(() => {
+    setUserID(userIDs);
     tbrFetch()
   }, [userIDs])
   
   const tbrFetch = async () => {
-    setUserID(userIDs);
     const result = await fetch("/api/tbrList", {
       method: "POST",
       headers: {
-        id: 8,
+        id: userID,
         "Content-Type": "application/json",
       },
     });
@@ -39,6 +39,32 @@ const TBR = () => {
       slicedArr.push(tbrList.slice(i, i + 3));
     }
     setTbrFormat(slicedArr);
+
+
+  };
+
+  
+  const tbrDelete = async (e) => {
+    const result = await fetch("/api/tbr/remove", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id: userID,
+        tbr: e.target.value
+      }),
+    });
+    result
+      .json()
+      .then((data) => {
+        console.log(data)
+        
+      })
+      .catch((error) => {
+        console.log(error);
+        return;
+      });
   };
 
 
@@ -59,6 +85,7 @@ const TBR = () => {
                         Preview Book
                       </a>
                     </button>
+                    <button value={e[0]} onClick={tbrDelete}>X</button>
                   </Card.Text>
                 </Card.Body>
               </Card>

@@ -14,13 +14,13 @@ const TBR = () => {
   useEffect(() => {
     setUserID(userIDs);
     tbrFetch()
-  }, [userIDs])
+  }, [userIDs, setTbrFormat])
   
   const tbrFetch = async () => {
     const result = await fetch("/api/tbrList", {
-      method: "POST",
+      method: "GET",
       headers: {
-        id: userID,
+        id: userIDs,
         "Content-Type": "application/json",
       },
     });
@@ -39,8 +39,6 @@ const TBR = () => {
       slicedArr.push(tbrList.slice(i, i + 3));
     }
     setTbrFormat(slicedArr);
-
-
   };
 
   
@@ -51,7 +49,7 @@ const TBR = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        id: userID,
+        id: userIDs,
         tbr: e.target.value
       }),
     });
@@ -59,7 +57,14 @@ const TBR = () => {
       .json()
       .then((data) => {
         console.log(data)
-        
+        let indexPosition = tbrFormat.indexOf(e.target.value)
+        let slicedArr = [];
+        for (let i = indexPosition; i < (indexPosition+2); i += 3) {
+          slicedArr.push(tbrFormat.splice(i, i + 3));
+        }
+        setTbrFormat([...tbrFormat,slicedArr])
+        setUserID(userIDs)
+        tbrFetch()
       })
       .catch((error) => {
         console.log(error);

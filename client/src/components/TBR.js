@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import { useSelector } from "react-redux";
@@ -7,12 +8,10 @@ import "../styles/UserLists.css";
 
 const TBR = () => {
   const [tbrList, setTbrList] = useState([]);
-  const [userID, setUserID] = useState(Number);
   const userIDs = useSelector((state) => state.userID);
   const [tbrFormat, setTbrFormat] = useState([]);
 
   useEffect(() => {
-    setUserID(userIDs);
     tbrFetch();
   }, [userIDs, setTbrFormat]);
 
@@ -20,7 +19,7 @@ const TBR = () => {
     const result = await fetch("/api/tbrList", {
       method: "GET",
       headers: {
-        id: userIDs,
+        id: 8,
         "Content-Type": "application/json",
       },
     });
@@ -48,7 +47,7 @@ const TBR = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        id: userIDs,
+        id: 8,
         tbr: e.target.value,
       }),
     });
@@ -61,7 +60,7 @@ const TBR = () => {
         for (let i = indexPosition; i < indexPosition + 2; i += 3) {
           slicedArr.push(tbrFormat.splice(i, i + 3));
         }
-        setTbrFormat([...tbrFormat, slicedArr]);
+        setTbrFormat([...tbrFormat, ...slicedArr]);
         tbrFetch();
       })
       .catch((error) => {
@@ -72,8 +71,15 @@ const TBR = () => {
 
   return (
     <div>
-      <div onMouseEnter={tbrFetch}>Mouse over to load TBR list</div>
-      <Row xs={2} sm={4} md={5} lg={6} xl={8} xxl={10} id="tbr-row">
+      <div className="content" onMouseEnter={tbrFetch}>
+        <h2>
+        ~ Mouse over to see books ~
+        </h2>
+        <h2>
+        ~ Mouse over to see books ~
+        </h2>
+        </div>
+      <Row xs={2} sm={3} md={5} lg={6} xl={8} xxl={10} id="tbr-row">
         {tbrFormat.map((e) => {
           return (
             <Col id="tbr-col">
@@ -87,14 +93,14 @@ const TBR = () => {
                 <Card.Body>
                   <Card.Title id="tbr-card-title">{e[0]}</Card.Title>
                   <Card.Text onMouseOver={tbrFetch}>
-                    <button id="tbr-card-btn">
-                      <a href={e[1]} target="_blank" rel="noreferrer">
+                    <Button className="card-btn">
+                      <a id="preview-book-href" href={e[1]} target="_blank" rel="noreferrer">
                         Preview Book
                       </a>
-                    </button>
-                    <button value={e[0]} onClick={tbrDelete}>
-                      X
-                    </button>
+                    </Button>
+                    <Button variant="danger" className="card-btn" value={e[0]} onClick={tbrDelete}>
+                      Remove
+                    </Button>
                   </Card.Text>
                 </Card.Body>
               </Card>

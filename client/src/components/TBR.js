@@ -3,7 +3,7 @@ import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import { useSelector } from "react-redux";
-import '../styles/UserLists.css'
+import "../styles/UserLists.css";
 
 const TBR = () => {
   const [tbrList, setTbrList] = useState([]);
@@ -13,9 +13,9 @@ const TBR = () => {
 
   useEffect(() => {
     setUserID(userIDs);
-    tbrFetch()
-  }, [userIDs, setTbrFormat])
-  
+    tbrFetch();
+  }, [userIDs, setTbrFormat]);
+
   const tbrFetch = async () => {
     const result = await fetch("/api/tbrList", {
       method: "GET",
@@ -41,7 +41,6 @@ const TBR = () => {
     setTbrFormat(slicedArr);
   };
 
-  
   const tbrDelete = async (e) => {
     const result = await fetch("/api/tbr/remove", {
       method: "PUT",
@@ -50,21 +49,20 @@ const TBR = () => {
       },
       body: JSON.stringify({
         id: userIDs,
-        tbr: e.target.value
+        tbr: e.target.value,
       }),
     });
     result
       .json()
       .then((data) => {
-        console.log(data)
-        let indexPosition = tbrFormat.indexOf(e.target.value)
+        console.log(data);
+        let indexPosition = tbrFormat.indexOf(e.target.value);
         let slicedArr = [];
-        for (let i = indexPosition; i < (indexPosition+2); i += 3) {
+        for (let i = indexPosition; i < indexPosition + 2; i += 3) {
           slicedArr.push(tbrFormat.splice(i, i + 3));
         }
-        setTbrFormat([...tbrFormat,slicedArr])
-        setUserID(userIDs)
-        tbrFetch()
+        setTbrFormat([...tbrFormat, slicedArr]);
+        tbrFetch();
       })
       .catch((error) => {
         console.log(error);
@@ -72,25 +70,31 @@ const TBR = () => {
       });
   };
 
-
   return (
     <div>
-      <div onMouseOver={tbrFetch}>Mouse over to load TBR list</div>
+      <div onMouseEnter={tbrFetch}>Mouse over to load TBR list</div>
       <Row xs={2} sm={4} md={5} lg={6} xl={8} xxl={10} id="tbr-row">
         {tbrFormat.map((e) => {
           return (
             <Col id="tbr-col">
               <Card id="tbr-card">
-                <Card.Img className="mx-auto" id="tbr-card-img" variant="top" src={e[2]} />
+                <Card.Img
+                  className="mx-auto"
+                  id="tbr-card-img"
+                  variant="top"
+                  src={e[2]}
+                />
                 <Card.Body>
                   <Card.Title id="tbr-card-title">{e[0]}</Card.Title>
-                  <Card.Text>
+                  <Card.Text onMouseOver={tbrFetch}>
                     <button id="tbr-card-btn">
                       <a href={e[1]} target="_blank" rel="noreferrer">
                         Preview Book
                       </a>
                     </button>
-                    <button value={e[0]} onClick={tbrDelete}>X</button>
+                    <button value={e[0]} onClick={tbrDelete}>
+                      X
+                    </button>
                   </Card.Text>
                 </Card.Body>
               </Card>

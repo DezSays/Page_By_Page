@@ -6,7 +6,6 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { useSelector } from "react-redux";
 
-
 const BookDetails = ({ bookList }) => {
   const [show, setShow] = useState(false);
   const [book, setBook] = useState("");
@@ -17,13 +16,13 @@ const BookDetails = ({ bookList }) => {
   const [description, setDescription] = useState("");
   const [display, setDisplay] = useState(0);
   const [tbr, setTbr] = useState('')
+  const [read, setRead] = useState('')
+  const [favorite, setFavorite] = useState('')
   const [userID, setUserID] = useState(Number)
   const [preview, setPreview] = useState('')
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const userIDs = useSelector(state => state.userID)
-
-  
 
   useEffect(() => {
     fetchBook();
@@ -34,6 +33,7 @@ const BookDetails = ({ bookList }) => {
     setDisplay(1);
     handleShow();
   };
+
   const fetchBook = async () => {
     setUserID(userIDs)
     const bookFetch = await fetch(`${bookURL}`);
@@ -50,6 +50,7 @@ const BookDetails = ({ bookList }) => {
     setDescription(descript);
     setDisplay(2);
   };
+  
   const addTBR = async (e) => {
     setTbr(e.target.value)
     e.preventDefault();
@@ -66,6 +67,56 @@ const BookDetails = ({ bookList }) => {
       }),
     });
     
+    await result.json()
+    .then((data) => {
+                console.log(data)
+            })
+            .catch((error) => {
+              console.log(error)
+                return
+            });
+  }
+
+  const addFavorite = async (e) => {
+    setFavorite(e.target.value)
+    e.preventDefault();
+    const result = await fetch("/api/favorite", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id: userID,
+        favorite: title,
+        preview: preview,
+        thumbnail:thumbnail
+      }),
+    });    
+    await result.json()
+    .then((data) => {
+                console.log(data)
+            })
+            .catch((error) => {
+              console.log(error)
+                return
+            });
+  }
+
+  const addRead = async (e) => {
+    setRead(e.target.value)
+    e.preventDefault();
+    const result = await fetch("/api/read", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id: userID,
+        read: title,
+        preview: preview,
+        thumbnail:thumbnail
+      }),
+    }); 
     await result.json()
     .then((data) => {
                 console.log(data)
@@ -149,8 +200,8 @@ const BookDetails = ({ bookList }) => {
             Close
           </Button>
           <Button variant="primary" value={title} id={tbr} onClick={addTBR}>TBR</Button>
-          <Button variant="primary" value={title}>Already Read</Button>
-          <Button variant="primary" value={title}>Favs</Button>
+          <Button variant="primary" value={title} id={read} onClick={addRead}>Already Read</Button>
+          <Button variant="primary" value={title} id={favorite} onClick={addFavorite}>Favs</Button>
         </Modal.Footer>
       </Modal>
       <p id={userID}></p>

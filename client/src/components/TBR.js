@@ -19,7 +19,7 @@ const TBR = () => {
     const result = await fetch("/api/tbrList", {
       method: "GET",
       headers: {
-        id: 8,
+        id: userIDs,
         "Content-Type": "application/json",
       },
     });
@@ -47,7 +47,7 @@ const TBR = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        id: 8,
+        id: userIDs,
         tbr: e.target.value,
       }),
     });

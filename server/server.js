@@ -51,6 +51,36 @@ app.get("/api/tbrList", async (req, res) => {
 });
 
 //* Route Good
+app.get("/api/readList", async (req, res) => {
+  let updatedUserID = req.headers.id;
+  try {
+    const userLoggedIn = await users.findOne({
+      where: {
+        id: updatedUserID,
+      },
+    });
+    res.json(userLoggedIn.dataValues.read);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+//* Route Good
+app.get("/api/favoriteList", async (req, res) => {
+  let updatedUserID = req.headers.id;
+  try {
+    const userLoggedIn = await users.findOne({
+      where: {
+        id: updatedUserID,
+      },
+    });
+    res.json(userLoggedIn.dataValues.favorite);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+//* Route Good
 app.put("/api/tbr", async (req, res) => {
   let updatedUserID = req.body.id;
   let updatedTBR = req.body.tbr;
@@ -90,6 +120,84 @@ app.put("/api/tbr", async (req, res) => {
 });
 
 //* Route Good
+app.put("/api/favorite", async (req, res) => {
+  let updatedUserID = req.body.id;
+  let updatedFavorite = req.body.favorite;
+  let preview = req.body.preview;
+  let thumbnail = req.body.thumbnail;
+  let selectedAcct = await users.findOne({
+    where: {
+      id: updatedUserID,
+    },
+  });
+  let newFavoriteList = "";
+  if (selectedAcct.dataValues !== null) {
+    newFavoriteList = selectedAcct.dataValues.favorite;
+  }
+  if (newFavoriteList == null) {
+    newFavoriteList = [];
+    newFavoriteList.push(updatedFavorite, preview, thumbnail);
+  }
+  if (!newFavoriteList.includes(updatedFavorite)) {
+    newFavoriteList.push(updatedFavorite, preview, thumbnail);
+  }
+  try {
+    let updatedList = await users.update(
+      {
+        favorite: newFavoriteList,
+      },
+      {
+        where: {
+          id: updatedUserID,
+        },
+      }
+    );
+    res.send(updatedList);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+//* Route Good
+app.put("/api/read", async (req, res) => {
+  let updatedUserID = req.body.id;
+  let updatedRead = req.body.read;
+  let preview = req.body.preview;
+  let thumbnail = req.body.thumbnail;
+  let selectedAcct = await users.findOne({
+    where: {
+      id: updatedUserID,
+    },
+  });
+  let newReadList = "";
+  if (selectedAcct.dataValues !== null) {
+    newReadList = selectedAcct.dataValues.read;
+  }
+  if (newReadList == null) {
+    newReadList = [];
+    newReadList.push(updatedRead, preview, thumbnail);
+  }
+  if (!newReadList.includes(updatedRead)) {
+    newReadList.push(updatedRead, preview, thumbnail);
+  }
+  try {
+    let updatedList = await users.update(
+      {
+        read: newReadList,
+      },
+      {
+        where: {
+          id: updatedUserID,
+        },
+      }
+    );
+    res.send(updatedList);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+//* Route Good
 app.put("/api/tbr/remove", async (req, res) => {
   let updatedUserID = req.body.id;
   let updatedTBR = req.body.tbr;
@@ -112,6 +220,78 @@ app.put("/api/tbr/remove", async (req, res) => {
     let updatedList = await users.update(
       {
         tbr: newTBRList,
+      },
+      {
+        where: {
+          id: updatedUserID,
+        },
+      }
+    );
+    res.send(updatedList);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+//* Route Good
+app.put("/api/read/remove", async (req, res) => {
+  let updatedUserID = req.body.id;
+  let updatedRead = req.body.read;
+  let selectedAcct = await users.findOne({
+    where: {
+      id: updatedUserID,
+    },
+  });
+  let newReadList = [];
+  if (selectedAcct.dataValues !== null) {
+    newReadList = selectedAcct.dataValues.tbr;
+    if (newReadList.includes(updatedRead)) {
+      const bookList = newReadList.indexOf(updatedRead);
+      if (bookList > -1) {
+        newReadList.splice(bookList, 3);
+      }
+    }
+  }
+  try {
+    let updatedList = await users.update(
+      {
+        read: newReadList,
+      },
+      {
+        where: {
+          id: updatedUserID,
+        },
+      }
+    );
+    res.send(updatedList);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+//* Route Good
+app.put("/api/favorite/remove", async (req, res) => {
+  let updatedUserID = req.body.id;
+  let updatedFavorite = req.body.favorite;
+  let selectedAcct = await users.findOne({
+    where: {
+      id: updatedUserID,
+    },
+  });
+  let newFavoriteList = [];
+  if (selectedAcct.dataValues !== null) {
+    newFavoriteList = selectedAcct.dataValues.favorite;
+    if (newFavoriteList.includes(updatedFavorite)) {
+      const bookList = newFavoriteList.indexOf(updatedFavorite);
+      if (bookList > -1) {
+        newFavoriteList.splice(bookList, 3);
+      }
+    }
+  }
+  try {
+    let updatedList = await users.update(
+      {
+        favorite: newFavoriteList,
       },
       {
         where: {
@@ -168,6 +348,7 @@ app.post("/api/login", async (req, res) => {
   }
 });
 
+//* Connection Good
 app.listen(PORT, async () => {
   console.log(`Listening on port ${PORT}`);
   try {

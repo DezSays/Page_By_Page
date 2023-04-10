@@ -11,14 +11,33 @@ const sequelize = new Sequelize(`${db}`);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.put("/api/dashboard", async (req, res) => {
-  // Check this route
+//* Route Good
+app.get("/api/user", async (req, res) => {
+  let userID = req.headers.id;
+  try {
+    const userLoggedIn = await users.findOne({
+      where: {
+        id: userID,
+      },
+    });
+    let userInfo = []
+    userInfo.push(userLoggedIn.username, userLoggedIn.firstName, userLoggedIn.lastName, userLoggedIn.email)
+    res.json(userInfo)
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+//* Route Good
+app.put("/api/userUpdate", async (req, res) => {
+  let userIDs = req.body.id;
   let updatedUsername = req.body.username;
   let updatedFirstName = req.body.firstName;
   let updatedLastName = req.body.lastName;
   let updatedEmail = req.body.email;
   let updatedPassword = req.body.password;
-  await users.update(
+  try {
+    let updatedAccount = await users.update(
     {
       username: updatedUsername,
       firstName: updatedFirstName,
@@ -28,11 +47,16 @@ app.put("/api/dashboard", async (req, res) => {
     },
     {
       where: {
-        email: email,
+        id: userIDs,
       },
     }
   );
-  res.json("Your account has been updated!");
+  res.json("Your account has been updated!")
+  res.send(updatedAccount)
+  }
+  catch(error){
+    console.log(error)
+  }
 });
 
 //* Route Good

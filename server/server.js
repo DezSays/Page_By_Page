@@ -11,7 +11,7 @@ const sequelize = new Sequelize(`${db}`);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.put("/api/dashboard/", async (req, res) => {
+app.put("/api/dashboard", async (req, res) => {
   // Check this route
   let updatedUsername = req.body.username;
   let updatedFirstName = req.body.firstName;
@@ -244,7 +244,7 @@ app.put("/api/read/remove", async (req, res) => {
   });
   let newReadList = [];
   if (selectedAcct.dataValues !== null) {
-    newReadList = selectedAcct.dataValues.tbr;
+    newReadList = selectedAcct.dataValues.read;
     if (newReadList.includes(updatedRead)) {
       const bookList = newReadList.indexOf(updatedRead);
       if (bookList > -1) {

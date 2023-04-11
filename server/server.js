@@ -36,6 +36,7 @@ app.put("/api/userUpdate", async (req, res) => {
   let updatedLastName = req.body.lastName;
   let updatedEmail = req.body.email;
   let updatedPassword = req.body.password;
+  updatedPassword = bcrypt.hashSync(updatedPassword, 8)
   try {
     let updatedAccount = await users.update(
     {
@@ -51,7 +52,6 @@ app.put("/api/userUpdate", async (req, res) => {
       },
     }
   );
-  res.json("Your account has been updated!")
   res.send(updatedAccount)
   }
   catch(error){

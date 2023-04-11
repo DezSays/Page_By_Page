@@ -25,6 +25,13 @@
 }
 #avatar-img{
   max-height: 30%;
-  margin:3%;
+  margin-top:3%;
 }
 
+#update-user-modal-body{
+  display: flex;
+  justify-content: center;
+}
+form input{
+  padding-left: 50%;
+}

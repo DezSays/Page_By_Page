@@ -40,6 +40,7 @@ const Login = () => {
     });
     await result.json()
     .then((data) => {
+      console.log(data)
       dispatch(alterID(data.id))
       console.log(data.id)
                 setEmail("");
@@ -82,7 +83,7 @@ const Login = () => {
           onChange={(event) => setPassword(event.target.value)}
           wrapperClass="mb-4"
           contrast
-          label="Password"
+          label="password"
           id="formControlLg"
           type="password"
           size="lg"

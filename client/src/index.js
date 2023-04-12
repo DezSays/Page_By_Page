@@ -10,6 +10,7 @@ import Home from "./components/Home";
 import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
 import App from "./App";
+import Footer from "./components/Footer"
 
 import { createStore } from "redux";
 import { Provider } from "react-redux";
@@ -34,15 +35,15 @@ root.render(
           </Routes>
         </BaseLayout>
       </Router>
+      <Footer />
     </Provider>
   </React.StrictMode>
 );
 
 // TODO
     // Add delete user functionality 
-    // Login component sign in -- allowing sign in even though authentication doesn't match
-    // Have signout button redirect to login page
-    // Remove register from navbar
-    // Only display navbar after userID is not null
-    // Connect and style footer
+    //* Login component sign in -- allowing sign in even though authentication doesn't match
+    //* Have signout button redirect to login page
+    //* Only display navbar after userID is not null
+    //* Connect and style footer
     // Style home page to display rotating books

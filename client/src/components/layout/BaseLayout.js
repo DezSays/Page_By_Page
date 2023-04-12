@@ -4,10 +4,22 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import alterID from "../../actions/alterID";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 const BaseLayout = (props) => {
-  return (
-    <>
+  const dispatch = useDispatch();
+    const userID = useSelector((state) => state.userID);
+
+  const handleSignOut = () => {
+    dispatch(alterID(0))
+  }
+  if(userID !== 0 && userID !== null){
+    console.log(userID)
+
+    return (
+      <>
       <Navbar id="navbar-layout" bg="light" expand="lg">
         <Container fluid>
           <Navbar.Brand href="/">Page by Page</Navbar.Brand>
@@ -19,12 +31,6 @@ const BaseLayout = (props) => {
               navbarScroll
             >
               <Nav.Link>
-                <Link to="/">Register</Link>
-              </Nav.Link>
-              <Nav.Link>
-                <Link to="/login">Login</Link>
-              </Nav.Link>
-              <Nav.Link>
                 <Link to="/home">Home</Link>
               </Nav.Link>
               <Nav.Link>
@@ -32,13 +38,23 @@ const BaseLayout = (props) => {
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>
-          <Button>Sign Out</Button>
+          <Button onClick={handleSignOut}>
+            <Link id="sign-out-btn" to="/login">Sign Out</Link>
+            </Button>
         </Container>
       </Navbar>
 
       {props.children}
     </>
   );
+}
+else{
+  return(
+    <>
+          {props.children}
+    </>
+  )
+}
 };
 
 export default BaseLayout;

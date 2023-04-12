@@ -41,9 +41,4 @@ root.render(
 );
 
 // TODO
-    // Add delete user functionality 
-    //* Login component sign in -- allowing sign in even though authentication doesn't match
-    //* Have signout button redirect to login page
-    //* Only display navbar after userID is not null
-    //* Connect and style footer
     // Style home page to display rotating books

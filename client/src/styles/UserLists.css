@@ -67,11 +67,12 @@
 }
 
 #tbr-card-img {
-  height: 75%;
+  height: 55%;
 }
 
 #tbr-card.card {
-  height: 100%;
+  height: 90%;
+  opacity: 85%;
 }
 
 #preview-book-href {
@@ -80,5 +81,19 @@
 
 .card-btn {
   font-size: 80%;
-  margin: 5%;
+  margin: 2%;
 }
+
+#uncontrolled-tab-example-tab-tbr, #uncontrolled-tab-example-tab-favorites, #uncontrolled-tab-example-tab-read{
+  color:white;
+  font-size: large;
+}
+
+#uncontrolled-tab-example-tab-tbr:hover, #uncontrolled-tab-example-tab-favorites:hover, #uncontrolled-tab-example-tab-read:hover{
+  color:#0d6efd
+}
+
+#uncontrolled-tab-example-tab-tbr[aria-selected="true"], #uncontrolled-tab-example-tab-favorites[aria-selected="true"], #uncontrolled-tab-example-tab-read[aria-selected="true"]{
+  color:#0d6efd
+}
+

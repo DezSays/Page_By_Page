@@ -113,10 +113,13 @@ const Dashboard = () => {
       <div id="top-div">
         <img id="avatar-img" alt="user-avatar" src="../../user-avatar.png" />
         <h3>{username}</h3>
-        <Button onClick={userUpdateForm}>Update Account</Button>
-        <Button variant="danger" onClick={handleShow1}>
+        <div id="account-btn-container">
+        <Button id="update-account-btn" onClick={userUpdateForm}>Update Account</Button>
+        <Button id="delete-account-btn" variant="danger" onClick={handleShow1}>
           Delete Account
         </Button>
+
+        </div>
         {showForm && (
           <div
             className="modal show"

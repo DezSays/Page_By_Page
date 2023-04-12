@@ -24,6 +24,7 @@ code {
 #navbar-layout {
   z-index: 1;
   position: static;
+  opacity: 70%;
 }
 
 #card-description {
@@ -53,6 +54,7 @@ code {
 #card-body {
   height: 45vh;
   word-wrap: break-word;
+  position:relative;
 }
 
 #selected-book-btn {
@@ -65,6 +67,8 @@ code {
 
 .card-text {
   line-height: 12pt;
+  bottom:0;
+  position:absolute
 }
 
 .navbar-light .navbar-toggler-icon {

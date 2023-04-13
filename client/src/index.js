@@ -9,8 +9,8 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
-import App from "./App";
 import Footer from "./components/Footer"
+import Register from "./components/Register";
 
 import { createStore } from "redux";
 import { Provider } from "react-redux";
@@ -28,7 +28,7 @@ root.render(
       <Router>
         <BaseLayout>
           <Routes>
-            <Route path="/" element={<App />} />
+            <Route path="/" element={<Register />} />
             <Route path="/home" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/dashboard" element={<Dashboard />} />

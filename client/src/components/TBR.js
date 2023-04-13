@@ -8,8 +8,8 @@ import "../styles/UserLists.css";
 
 const TBR = () => {
   const [tbrList, setTbrList] = useState([]);
-  const userIDs = useSelector((state) => state.userID);
   const [tbrFormat, setTbrFormat] = useState([]);
+  const userIDs = useSelector((state) => state.userID);
 
   useEffect(() => {
     tbrFetch();

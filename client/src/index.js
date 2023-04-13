@@ -40,5 +40,3 @@ root.render(
   </React.StrictMode>
 );
 
-// TODO
-    // Style home page to display rotating books

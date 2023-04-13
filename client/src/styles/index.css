@@ -78,3 +78,9 @@ code {
 #sign-out-btn{
   color:white
 }
+
+.search{
+  display: flex;
+  justify-content: center;
+  margin:1%
+}

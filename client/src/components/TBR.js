@@ -82,7 +82,7 @@ const TBR = () => {
       <Row xs={2} sm={3} md={5} lg={6} xl={8} xxl={10} id="tbr-row">
         {tbrFormat.map((e) => {
           return (
-            <Col id="tbr-col">
+            <Col id="home-col">
               <Card id="tbr-card">
                 <Card.Img
                   className="mx-auto"

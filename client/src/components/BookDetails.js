@@ -15,14 +15,14 @@ const BookDetails = ({ bookList }) => {
   const [thumbnail, setThumbnail] = useState("");
   const [description, setDescription] = useState("");
   const [display, setDisplay] = useState(0);
-  const [tbr, setTbr] = useState('')
-  const [read, setRead] = useState('')
-  const [favorite, setFavorite] = useState('')
-  const [userID, setUserID] = useState(Number)
-  const [preview, setPreview] = useState('')
+  const [tbr, setTbr] = useState("");
+  const [read, setRead] = useState("");
+  const [favorite, setFavorite] = useState("");
+  const [userID, setUserID] = useState(Number);
+  const [preview, setPreview] = useState("");
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const userIDs = useSelector(state => state.userID)
+  const userIDs = useSelector((state) => state.userID);
 
   useEffect(() => {
     fetchBook();
@@ -35,10 +35,10 @@ const BookDetails = ({ bookList }) => {
   };
 
   const fetchBook = async () => {
-    setUserID(userIDs)
+    setUserID(userIDs);
     const bookFetch = await fetch(`${bookURL}`);
     const book = await bookFetch.json();
-    setPreview(book.volumeInfo.previewLink)
+    setPreview(book.volumeInfo.previewLink);
     setTitle(book.volumeInfo.title);
     setAuthors(book.volumeInfo.authors);
     let img =
@@ -50,9 +50,9 @@ const BookDetails = ({ bookList }) => {
     setDescription(descript);
     setDisplay(2);
   };
-  
+
   const addTBR = async (e) => {
-    setTbr(e.target.value)
+    setTbr(e.target.value);
     e.preventDefault();
     const result = await fetch("/api/tbr", {
       method: "PUT",
@@ -63,22 +63,23 @@ const BookDetails = ({ bookList }) => {
         id: userID,
         tbr: title,
         preview: preview,
-        thumbnail:thumbnail
+        thumbnail: thumbnail,
       }),
     });
-    
-    await result.json()
-    .then((data) => {
-                console.log(data)
-            })
-            .catch((error) => {
-              console.log(error)
-                return
-            });
-  }
+
+    await result
+      .json()
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error);
+        return;
+      });
+  };
 
   const addFavorite = async (e) => {
-    setFavorite(e.target.value)
+    setFavorite(e.target.value);
     e.preventDefault();
     const result = await fetch("/api/favorite", {
       method: "PUT",
@@ -89,21 +90,22 @@ const BookDetails = ({ bookList }) => {
         id: userID,
         favorite: title,
         preview: preview,
-        thumbnail:thumbnail
+        thumbnail: thumbnail,
       }),
-    });    
-    await result.json()
-    .then((data) => {
-                console.log(data)
-            })
-            .catch((error) => {
-              console.log(error)
-                return
-            });
-  }
+    });
+    await result
+      .json()
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error);
+        return;
+      });
+  };
 
   const addRead = async (e) => {
-    setRead(e.target.value)
+    setRead(e.target.value);
     e.preventDefault();
     const result = await fetch("/api/read", {
       method: "PUT",
@@ -114,19 +116,19 @@ const BookDetails = ({ bookList }) => {
         id: userID,
         read: title,
         preview: preview,
-        thumbnail:thumbnail
+        thumbnail: thumbnail,
       }),
-    }); 
-    await result.json()
-    .then((data) => {
-                console.log(data)
-            })
-            .catch((error) => {
-              console.log(error)
-                return
-            });
-  }
-
+    });
+    await result
+      .json()
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error);
+        return;
+      });
+  };
 
   return (
     <>
@@ -136,8 +138,8 @@ const BookDetails = ({ bookList }) => {
             e.volumeInfo.imageLinks && e.volumeInfo.imageLinks.smallThumbnail;
 
           let authors = e.volumeInfo.authors;
-          let authorsStr = ''
-          if(typeof(authors) === Array){
+          let authorsStr = "";
+          if (typeof authors === Array) {
             authorsStr = authors.toString();
           }
           let authorsFormat = authorsStr.split("").join("");
@@ -199,9 +201,20 @@ const BookDetails = ({ bookList }) => {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" value={title} id={tbr} onClick={addTBR}>TBR</Button>
-          <Button variant="primary" value={title} id={read} onClick={addRead}>Already Read</Button>
-          <Button variant="primary" value={title} id={favorite} onClick={addFavorite}>Favs</Button>
+          <Button variant="primary" value={title} id={tbr} onClick={addTBR}>
+            TBR
+          </Button>
+          <Button variant="primary" value={title} id={read} onClick={addRead}>
+            Already Read
+          </Button>
+          <Button
+            variant="primary"
+            value={title}
+            id={favorite}
+            onClick={addFavorite}
+          >
+            Favs
+          </Button>
         </Modal.Footer>
       </Modal>
       <p id={userID}></p>

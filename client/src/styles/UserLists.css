@@ -64,6 +64,7 @@
 
 #tbr-card-title {
   font-size: 100%;
+  width:100%
 }
 
 #tbr-card-img {
@@ -97,3 +98,30 @@
   color:#0d6efd
 }
 
+#home-display-book-details-div{
+height:100%
+}
+
+#card-description-home{
+  display: -webkit-box;
+-webkit-line-clamp: 3;
+-webkit-box-orient: vertical;
+overflow: hidden;
+text-overflow: ellipsis;
+max-height:10vh;
+margin-bottom:20%;
+width:90%;
+font-size: large;
+
+}
+
+#card-body-home.card-body{
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+#home-card.card {
+  height: 90%;
+  opacity: 85%;
+}

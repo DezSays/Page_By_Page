@@ -1,0 +1,45 @@
+#about-app-body {
+    background-image: url('../../public/aboutapp.jpg');
+    background-size: cover;
+    height:100vh
+}
+
+#about-app-container{
+    color:yellow;
+    background-color: black;
+    width:40%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    opacity: 75%;
+    margin-left:30%;
+    margin-top: 5%;
+    text-align: center;
+    border-radius: 25px;
+}
+
+#about-app-btn-container{
+display: flex;
+justify-content: center;
+}
+
+#about-app-description{
+    width:90%;
+    margin: 5%;
+}
+
+#login-redirect-btn, #register-redirect-btn {
+    margin:5%
+}
+
+#about-app-h5, #about-app-h2{
+    margin:2%;
+}
+
+#about-app-h2{
+    font-size: xx-large;
+}
+
+#about-app-h5{
+    font-size: 150%
+}

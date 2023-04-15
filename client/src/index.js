@@ -11,6 +11,7 @@ import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
 import Footer from "./components/Footer"
 import Register from "./components/Register";
+import AboutApp from "./components/AboutApp";
 
 import { createStore } from "redux";
 import { Provider } from "react-redux";
@@ -28,9 +29,10 @@ root.render(
       <Router>
         <BaseLayout>
           <Routes>
-            <Route path="/" element={<Register />} />
+            <Route path="/" element={<AboutApp />} />
             <Route path="/home" element={<Home />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
             <Route path="/dashboard" element={<Dashboard />} />
           </Routes>
         </BaseLayout>

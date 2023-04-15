@@ -7,7 +7,13 @@
 
 }
 body{
-  background-image: radial-gradient(circle, #aca9bb, #a29fb1, #9895a7, #8e8c9d, #848293, #7b798b, #726f82, #69667a, #5e5b71, #545168, #49475f, #3f3d56);
+  background-image: url('../../public/login-bg.jpg');
+  background-size: cover;
+
+}
+html{
+  width: 100vw;
+  overflow-x: hidden;
 }
 
 #formControlLg{

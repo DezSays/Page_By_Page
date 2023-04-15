@@ -95,7 +95,7 @@ const TBR = () => {
                   <Card.Text onMouseOver={tbrFetch}>
                     <Button className="card-btn">
                       <a id="preview-book-href" href={e[1]} target="_blank" rel="noreferrer">
-                        Preview Book
+                        Buy
                       </a>
                     </Button>
                     <Button variant="danger" className="card-btn" value={e[0]} onClick={tbrDelete}>

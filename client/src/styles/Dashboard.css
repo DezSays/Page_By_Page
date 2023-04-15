@@ -14,10 +14,11 @@
   left: 0;
   bottom: 60%;
   text-align: center;
+  color:white
 }
 #bottom-div {
   position: absolute;
-  top: 30%;
+  top: 40%;
   right: 0;
   left: 0;
   bottom: 0;

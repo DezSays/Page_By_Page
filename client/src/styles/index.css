@@ -14,6 +14,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
 }
 
 code {
@@ -24,7 +25,12 @@ code {
 #navbar-layout {
   z-index: 1;
   position: static;
-  opacity: 70%;
+  opacity: 50%;
+  background-color: white;
+}
+
+#navbar-layout:hover{
+  opacity:100%
 }
 
 #card-description {
@@ -82,5 +88,5 @@ code {
 .search{
   display: flex;
   justify-content: center;
-  margin:1%
+  margin:1%;
 }

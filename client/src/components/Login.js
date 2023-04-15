@@ -20,7 +20,7 @@ const Login = () => {
   const navigate = useNavigate()
 
   const handleClick = () => {
-    navigate('/')
+    navigate('/register')
   }
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('')

@@ -20,7 +20,7 @@ const BaseLayout = (props) => {
 
     return (
       <>
-      <Navbar id="navbar-layout" bg="light" expand="lg">
+      <Navbar id="navbar-layout" expand="lg">
         <Container fluid>
           <Navbar.Brand href="/">Page by Page</Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" id="nav-collapse" />

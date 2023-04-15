@@ -196,7 +196,7 @@ const Home = () => {
             onChange={(e) => setSearch(e.target.value)}
             onKeyUp={searchBook}
           />
-          <Button variant="success" onClick={fetchBooks}>
+          <Button variant="warning" onClick={fetchBooks}>
             Search
           </Button>
         </div>
@@ -307,7 +307,7 @@ const Home = () => {
             onChange={(e) => setSearch(e.target.value)}
             onKeyUp={searchBook}
           />
-          <Button variant="success" onClick={fetchBooks}>
+          <Button variant="warning" onClick={fetchBooks}>
             Search
           </Button>
         </div>

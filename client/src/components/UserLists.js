@@ -10,7 +10,7 @@ import '../styles/UserLists.css'
 const UserLists = () => {
     return (
         <Tabs
-          defaultActiveKey="profile"
+          defaultActiveKey="favorites"
           id="uncontrolled-tab-example"
           className="mb-3"
         >

@@ -64,7 +64,11 @@
 
 #tbr-card-title {
   font-size: 100%;
-  width:100%
+  width:100%;
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis;
+  height: 10vh;
 }
 
 #tbr-card-img {
@@ -104,15 +108,18 @@ height:100%
 
 #card-description-home{
   display: -webkit-box;
--webkit-line-clamp: 3;
+-webkit-line-clamp: 2;
 -webkit-box-orient: vertical;
 overflow: hidden;
 text-overflow: ellipsis;
-max-height:10vh;
-margin-bottom:20%;
+margin-bottom:35%;
 width:90%;
-font-size: large;
+font-size: medium;
 
+}
+
+#home-card-btn-details{
+  margin-bottom:10%;
 }
 
 #card-body-home.card-body{
@@ -122,6 +129,6 @@ font-size: large;
 }
 
 #home-card.card {
-  height: 90%;
+  height: 95%;
   opacity: 85%;
 }

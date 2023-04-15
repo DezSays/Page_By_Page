@@ -5,6 +5,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { useSelector } from "react-redux";
+import "../styles/UserLists.css";
 
 const BookDetails = ({ bookList }) => {
   const [show, setShow] = useState(false);
@@ -132,51 +133,51 @@ const BookDetails = ({ bookList }) => {
 
   return (
     <>
-      <Row xs={1} md={2} lg={4} xl={6} className="g-4 ">
+        <Row xs={2} sm={3} md={4} lg={5} xl={6} xxl={7} id="tbr-row">
         {bookList.map((e) => {
           let thumbnail =
             e.volumeInfo.imageLinks && e.volumeInfo.imageLinks.smallThumbnail;
 
-          let authors = e.volumeInfo.authors;
-          let authorsStr = "";
-          if (typeof authors === Array) {
-            authorsStr = authors.toString();
-          }
-          let authorsFormat = authorsStr.split("").join("");
-
           if (thumbnail !== undefined) {
             return (
               <>
-                <Col>
-                  <div
-                    onClick={() => {
-                      setShow(true);
-                      setBook(e);
-                    }}
-                  >
-                    <Card className="text-center">
-                      <Card.Img variant="top" id="card-img" src={thumbnail} />
-                      <Card.Body id="card-body">
-                        <Card.Title id="card-title">
-                          {e.volumeInfo.title}
-                        </Card.Title>
-                        <Card.Text id="card-description">
-                          {e.volumeInfo.description}
-                        </Card.Text>
-                        <Card.Text>Author(s): {authorsFormat}</Card.Text>
-                        <Card.Text>Genre: {e.volumeInfo.categories}</Card.Text>
+                  <Col id="tbr-col">
+                    <div id="home-display-book-details-div"
+                      onClick={() => {
+                        setShow(true);
+                        setBook(e);
+                      }}
+                    >
+                      <Card id="home-card">
+                        <Card.Img
+                          className="mx-auto"
+                          id="tbr-card-img"
+                          variant="top"
+                          src={thumbnail}
+                        />
+                        <Card.Body id="card-body-home">
+                          <Card.Title id="tbr-card-title">
+                            {e.volumeInfo.title}
+                          </Card.Title>
+                          <Card.Text id="card-description-home">
+                            {e.volumeInfo.description}
+                            </Card.Text>
+                            <Card.Text id="card-btn-txt">
+                            <Button 
+                            id="home-card-btn-details"
+                            onClick={handleClick}
+                            value={e.selfLink}
+                            className="card-btn" 
+                            >
 
-                        <Button
-                          onClick={handleClick}
-                          value={e.selfLink}
-                          id="selected-book-btn"
-                        >
-                          Book URL: {e.selfLink}
-                        </Button>
-                      </Card.Body>
-                    </Card>
-                  </div>
-                </Col>
+                              Details
+
+                          </Button>
+                            </Card.Text>
+                        </Card.Body>
+                      </Card>
+                    </div>
+                  </Col>
               </>
             );
           }

@@ -135,18 +135,21 @@ const Home = () => {
   const addFavorite = async (e) => {
     setFavorite(e.target.value);
     e.preventDefault();
-    const result = await fetch("https://page-by-page.onrender.com/api/favorite", {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        id: userID,
-        favorite: title,
-        preview: preview,
-        thumbnail: thumbnail,
-      }),
-    });
+    const result = await fetch(
+      "https://page-by-page.onrender.com/api/favorite",
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id: userID,
+          favorite: title,
+          preview: preview,
+          thumbnail: thumbnail,
+        }),
+      }
+    );
     await result
       .json()
       .then((data) => {
@@ -216,7 +219,8 @@ const Home = () => {
               return (
                 <>
                   <Col id="tbr-col">
-                    <div id="home-display-book-details-div"
+                    <div
+                      id="home-display-book-details-div"
                       onClick={() => {
                         setShow(true);
                         setBook(e);
@@ -235,19 +239,17 @@ const Home = () => {
                           </Card.Title>
                           <Card.Text id="card-description-home">
                             {e.volumeInfo.description}
-                            </Card.Text>
-                            <Card.Text>
-                            <Button 
-                            id="home-card-btn-details"
-                            onClick={handleClick}
-                            value={e.selfLink}
-                            className="card-btn" 
+                          </Card.Text>
+                          <Card.Text>
+                            <Button
+                              id="home-card-btn-details"
+                              onClick={handleClick}
+                              value={e.selfLink}
+                              className="card-btn"
                             >
-
                               Details
-
-                          </Button>
-                            </Card.Text>
+                            </Button>
+                          </Card.Text>
                         </Card.Body>
                       </Card>
                     </div>

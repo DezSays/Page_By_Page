@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "page_by_page_user",
+    "password": "02d21XRztcVckLmwitFgadIR7mndghIA",
+    "database": "page_by_page",
+    "host": "dpg-cgtnbsiut4mcfrmhra4g-a",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "page_by_page_user",
+    "password": "02d21XRztcVckLmwitFgadIR7mndghIA",
+    "database": "page_by_page",
+    "host": "dpg-cgtnbsiut4mcfrmhra4g-a",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "page_by_page_user",
+    "password": "02d21XRztcVckLmwitFgadIR7mndghIA",
+    "database": "page_by_page",
+    "host": "dpg-cgtnbsiut4mcfrmhra4g-a",
+    "dialect": "postgres"
+  }
+}

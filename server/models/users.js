@@ -19,9 +19,9 @@ module.exports = (sequelize, DataTypes) => {
     username: DataTypes.STRING,
     email: DataTypes.STRING,
     password: DataTypes.STRING,
-    favorite: DataTypes.ARRAY(Sequelize.STRING),
-    read: DataTypes.ARRAY(Sequelize.STRING),
-    tbr: DataTypes.ARRAY(Sequelize.STRING)
+    favorite: DataTypes.ARRAY(Sequelize.STRING(100000)),
+    read: DataTypes.ARRAY(Sequelize.STRING(100000)),
+    tbr: DataTypes.ARRAY(Sequelize.STRING(100000))
   }, {
     sequelize,
     modelName: 'users',

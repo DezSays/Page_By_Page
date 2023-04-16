@@ -25,13 +25,13 @@ module.exports = {
         type: Sequelize.STRING
       },
       favorite: {
-        type: Sequelize.ARRAY(Sequelize.STRING)
+        type: Sequelize.ARRAY(Sequelize.STRING(100000))
       },
       read: {
-        type: Sequelize.ARRAY(Sequelize.STRING)
+        type: Sequelize.ARRAY(Sequelize.STRING(100000))
       },
       tbr: {
-        type: Sequelize.ARRAY(Sequelize.STRING)
+        type: Sequelize.ARRAY(Sequelize.STRING(100000))
       },
       createdAt: {
         allowNull: false,

@@ -25,20 +25,23 @@ module.exports = {
         type: Sequelize.STRING
       },
       favorite: {
+        allowNull: true,
         type: Sequelize.ARRAY(Sequelize.STRING(100000))
       },
       read: {
+        allowNull: true,
         type: Sequelize.ARRAY(Sequelize.STRING(100000))
       },
       tbr: {
+        allowNull: true,
         type: Sequelize.ARRAY(Sequelize.STRING(100000))
       },
       createdAt: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.DATE
       },
       updatedAt: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.DATE
       }
     });

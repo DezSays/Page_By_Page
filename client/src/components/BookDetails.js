@@ -55,7 +55,7 @@ const BookDetails = ({ bookList }) => {
   const addTBR = async (e) => {
     setTbr(e.target.value);
     e.preventDefault();
-    const result = await fetch("/api/tbr", {
+    const result = await fetch("https://page-by-page.onrender.com/api/tbr", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -82,7 +82,7 @@ const BookDetails = ({ bookList }) => {
   const addFavorite = async (e) => {
     setFavorite(e.target.value);
     e.preventDefault();
-    const result = await fetch("/api/favorite", {
+    const result = await fetch("https://page-by-page.onrender.com/api/favorite", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -108,7 +108,7 @@ const BookDetails = ({ bookList }) => {
   const addRead = async (e) => {
     setRead(e.target.value);
     e.preventDefault();
-    const result = await fetch("/api/read", {
+    const result = await fetch("https://page-by-page.onrender.com/api/read", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

@@ -17,7 +17,7 @@ const Favorites = () => {
   }, [userIDs, setFavoriteFormat]);
 
   const favoriteFetch = async () => {
-    const result = await fetch("/api/favoriteList", {
+    const result = await fetch("https://page-by-page.onrender.com/api/favoriteList", {
       method: "GET",
       headers: {
         id: userIDs,
@@ -42,7 +42,7 @@ const Favorites = () => {
     
     const favoriteDelete = async (e) => {
       console.log(e.target.value)
-      const result = await fetch("/api/favorite/remove", {
+      const result = await fetch("https://page-by-page.onrender.com/api/favorite/remove", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

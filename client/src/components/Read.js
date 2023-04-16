@@ -17,7 +17,7 @@ const Read = () => {
   }, [userIDs, setReadFormat]);
 
   const readFetch = async () => {
-    const result = await fetch("/api/readList", {
+    const result = await fetch("https://page-by-page.onrender.com/api/readList", {
       method: "GET",
       headers: {
         id: userIDs,
@@ -42,7 +42,7 @@ const Read = () => {
     
     const readDelete = async (e) => {
       console.log(e.target.value)
-      const result = await fetch("/api/read/remove", {
+      const result = await fetch("https://page-by-page.onrender.com/api/read/remove", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

@@ -24,7 +24,7 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const result = await fetch("/api/register", {
+    const result = await fetch("https://page-by-page.onrender.com/api/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

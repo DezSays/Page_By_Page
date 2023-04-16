@@ -16,7 +16,7 @@ const TBR = () => {
   }, [userIDs, setTbrFormat]);
 
   const tbrFetch = async () => {
-    const result = await fetch("/api/tbrList", {
+    const result = await fetch("https://page-by-page.onrender.com/api/tbrList", {
       method: "GET",
       headers: {
         id: userIDs,
@@ -41,7 +41,7 @@ const TBR = () => {
   };
 
   const tbrDelete = async (e) => {
-    const result = await fetch("/api/tbr/remove", {
+    const result = await fetch("https://page-by-page.onrender.com/api/tbr/remove", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

@@ -29,7 +29,7 @@ const Dashboard = () => {
   }, [userIDs]);
 
   const userInfoFetch = async () => {
-    const result = await fetch("/api/user", {
+    const result = await fetch("https://page-by-page.onrender.com/api/user", {
       method: "GET",
       headers: {
         id: userIDs,
@@ -55,7 +55,7 @@ const Dashboard = () => {
     e.preventDefault();
     setShowForm(false);
 
-    const result = await fetch("/api/userUpdate", {
+    const result = await fetch("https://page-by-page.onrender.com/api/userUpdate", {
       method: "PUT",
       headers: {
         id: userIDs,
@@ -82,7 +82,7 @@ const Dashboard = () => {
   };
 
   const userDeleteFetch = async () => {
-    const result = await fetch("/api/user/delete", {
+    const result = await fetch("https://page-by-page.onrender.com/api/user/delete", {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

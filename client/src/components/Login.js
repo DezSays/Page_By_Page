@@ -28,7 +28,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const result = await fetch('/api/login', {
+    const result = await fetch('https://page-by-page.onrender.com/api/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

@@ -13,7 +13,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 var corsOptions = {
-  host: 'https://main.d2sh501brp4jaq.amplifyapp.com'
+  origin: 'https://main.d2sh501brp4jaq.amplifyapp.com',
+  optionsSuccessStatus: 200 
 }
 
 //* GET Routes

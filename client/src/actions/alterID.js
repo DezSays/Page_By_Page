@@ -1,14 +1,8 @@
-
-
 const alterID = (num) => {
-    
-    return {
-        type: "ALTERID", 
-        data: num
-    }
-}
+  return {
+    type: "ALTERID",
+    data: num,
+  };
+};
 
-
-export default alterID
-
-
+export default alterID;

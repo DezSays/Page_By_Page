@@ -11,6 +11,7 @@ const sequelize = new Sequelize(`${db}`);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.options('*', cors())
 
 var corsOptions = {
   origin: 'https://main.d2sh501brp4jaq.amplifyapp.com',

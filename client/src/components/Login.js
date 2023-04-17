@@ -46,7 +46,7 @@ const Login = () => {
           setPassword("");
           navigate("/home");
         } else {
-          console.log(data);
+          setIsError(true);
         }
       })
 

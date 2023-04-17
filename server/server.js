@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors")
 const bcrypt = require("bcryptjs");
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -10,6 +11,7 @@ const sequelize = new Sequelize(`${db}`);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors())
 
 //* GET Routes
 app.get("/api/user", async (req, res) => {

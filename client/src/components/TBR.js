@@ -20,9 +20,8 @@ const TBR = () => {
       method: "GET",
       headers: {
         id: userIDs,
-        "access-control-allow-origin": "*",
-        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-        'Access-Control-Allow-Methods': '*',
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Headers": "*"
       },
     });
     result
@@ -46,9 +45,8 @@ const TBR = () => {
     const result = await fetch("https://page-by-page.onrender.com/api/tbr/remove", {
       method: "PUT",
       headers: {
-        "access-control-allow-origin": "*",
-        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-        'Access-Control-Allow-Methods': '*',
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Headers": "*"
       },
       body: JSON.stringify({
         id: userIDs,

@@ -13,13 +13,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.options('*', cors())
 
-var corsOptions = {
-  origin: 'https://main.d2sh501brp4jaq.amplifyapp.com',
-  optionsSuccessStatus: 200 
-}
-
 //* GET Routes
-app.get("/api/user", cors(corsOptions), async (req, res) => {
+app.get("/api/user", async (req, res) => {
   let userID = req.headers.id;
   try {
     const userLoggedIn = await users.findOne({
@@ -35,7 +30,7 @@ app.get("/api/user", cors(corsOptions), async (req, res) => {
   }
 });
 
-app.get("/api/tbrList", cors(corsOptions), async (req, res) => {
+app.get("/api/tbrList", async (req, res) => {
   let updatedUserID = req.headers.id;
   try {
     const userLoggedIn = await users.findOne({
@@ -49,7 +44,7 @@ app.get("/api/tbrList", cors(corsOptions), async (req, res) => {
   }
 });
 
-app.get("/api/readList", cors(corsOptions), async (req, res) => {
+app.get("/api/readList", async (req, res) => {
   let updatedUserID = req.headers.id;
   try {
     const userLoggedIn = await users.findOne({
@@ -63,7 +58,7 @@ app.get("/api/readList", cors(corsOptions), async (req, res) => {
   }
 });
 
-app.get("/api/favoriteList", cors(corsOptions), async (req, res) => {
+app.get("/api/favoriteList", async (req, res) => {
   let updatedUserID = req.headers.id;
   try {
     const userLoggedIn = await users.findOne({
@@ -78,7 +73,7 @@ app.get("/api/favoriteList", cors(corsOptions), async (req, res) => {
 });
 
 //* POST Routes
-app.post("/api/register", cors(corsOptions), async (req, res) => {
+app.post("/api/register", async (req, res) => {
   let { firstName, lastName, username, email, password } = req.body;
   try {
     let records = await users.findAll({ where: { email } });
@@ -95,7 +90,7 @@ app.post("/api/register", cors(corsOptions), async (req, res) => {
   }
 });
 
-app.post("/api/login", cors(corsOptions), async (req, res) => {
+app.post("/api/login", async (req, res) => {
   try {
     console.log(req.body)
     let { email, password } = req.body;
@@ -116,7 +111,7 @@ app.post("/api/login", cors(corsOptions), async (req, res) => {
 });
 
 //* PUT Routes
-app.put("/api/userUpdate", cors(corsOptions), async (req, res) => {
+app.put("/api/userUpdate", async (req, res) => {
   let userIDs = req.body.id;
   let updatedUsername = req.body.username;
   let updatedFirstName = req.body.firstName;
@@ -146,7 +141,7 @@ app.put("/api/userUpdate", cors(corsOptions), async (req, res) => {
   }
 });
 
-app.put("/api/tbr", cors(corsOptions), async (req, res) => {
+app.put("/api/tbr", async (req, res) => {
   let updatedUserID = req.body.id;
   let updatedTBR = req.body.tbr;
   let preview = req.body.preview;
@@ -184,7 +179,7 @@ app.put("/api/tbr", cors(corsOptions), async (req, res) => {
   }
 });
 
-app.put("/api/favorite", cors(corsOptions), async (req, res) => {
+app.put("/api/favorite", async (req, res) => {
   let updatedUserID = req.body.id;
   let updatedFavorite = req.body.favorite;
   let preview = req.body.preview;
@@ -222,7 +217,7 @@ app.put("/api/favorite", cors(corsOptions), async (req, res) => {
   }
 });
 
-app.put("/api/read", cors(corsOptions), async (req, res) => {
+app.put("/api/read", async (req, res) => {
   let updatedUserID = req.body.id;
   let updatedRead = req.body.read;
   let preview = req.body.preview;
@@ -260,7 +255,7 @@ app.put("/api/read", cors(corsOptions), async (req, res) => {
   }
 });
 
-app.put("/api/tbr/remove", cors(corsOptions), async (req, res) => {
+app.put("/api/tbr/remove", async (req, res) => {
   let updatedUserID = req.body.id;
   let updatedTBR = req.body.tbr;
   let selectedAcct = await users.findOne({
@@ -295,7 +290,7 @@ app.put("/api/tbr/remove", cors(corsOptions), async (req, res) => {
   }
 });
 
-app.put("/api/read/remove", cors(corsOptions), async (req, res) => {
+app.put("/api/read/remove", async (req, res) => {
   let updatedUserID = req.body.id;
   let updatedRead = req.body.read;
   let selectedAcct = await users.findOne({
@@ -330,7 +325,7 @@ app.put("/api/read/remove", cors(corsOptions), async (req, res) => {
   }
 });
 
-app.put("/api/favorite/remove", cors(corsOptions), async (req, res) => {
+app.put("/api/favorite/remove", async (req, res) => {
   let updatedUserID = req.body.id;
   let updatedFavorite = req.body.favorite;
   let selectedAcct = await users.findOne({
@@ -366,7 +361,7 @@ app.put("/api/favorite/remove", cors(corsOptions), async (req, res) => {
 });
 
 //* DELETE Routes
-app.delete("/api/user/delete", cors(corsOptions), async (req, res) => {
+app.delete("/api/user/delete", async (req, res) => {
   let userID = req.body.id;
   await users.destroy({ where: { id: userID } });
   res.json("User successfully deleted.");

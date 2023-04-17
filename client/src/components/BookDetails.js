@@ -58,9 +58,8 @@ const BookDetails = ({ bookList }) => {
     const result = await fetch("https://page-by-page.onrender.com/api/tbr", {
       method: "PUT",
       headers: {
-        "access-control-allow-origin": "*",
-        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-        'Access-Control-Allow-Methods': '*',
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Headers": "*"
       },
       body: JSON.stringify({
         id: userID,
@@ -87,9 +86,8 @@ const BookDetails = ({ bookList }) => {
     const result = await fetch("https://page-by-page.onrender.com/api/favorite", {
       method: "PUT",
       headers: {
-        "access-control-allow-origin": "*",
-        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-        'Access-Control-Allow-Methods': '*',
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Headers": "*"
       },
       body: JSON.stringify({
         id: userID,
@@ -115,9 +113,8 @@ const BookDetails = ({ bookList }) => {
     const result = await fetch("https://page-by-page.onrender.com/api/read", {
       method: "PUT",
       headers: {
-        "access-control-allow-origin": "*",
-        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-        'Access-Control-Allow-Methods': '*',
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Headers": "*"
       },
       body: JSON.stringify({
         id: userID,

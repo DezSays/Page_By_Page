@@ -112,8 +112,9 @@ const Home = () => {
     const result = await fetch("https://page-by-page.onrender.com/api/read", {
       method: "PUT",
       headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Headers": "*"
+        "access-control-allow-origin": "*",
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+        'Access-Control-Allow-Methods': '*',
       },
       body: JSON.stringify({
         id: userID,
@@ -141,8 +142,9 @@ const Home = () => {
       {
         method: "PUT",
         headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Headers": "*"
+          "access-control-allow-origin": "*",
+          'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+          'Access-Control-Allow-Methods': '*',
         },
         body: JSON.stringify({
           id: userID,
@@ -169,8 +171,9 @@ const Home = () => {
     const result = await fetch("https://page-by-page.onrender.com/api/tbr", {
       method: "PUT",
       headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Headers": "*"
+        "access-control-allow-origin": "*",
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+        'Access-Control-Allow-Methods': '*',
       },
       body: JSON.stringify({
         id: userID,

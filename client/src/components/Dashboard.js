@@ -33,8 +33,9 @@ const Dashboard = () => {
       method: "GET",
       headers: {
         id: userIDs,
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Headers": "*"
+        "access-control-allow-origin": "*",
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+        'Access-Control-Allow-Methods': '*',
       },
     });
     result
@@ -60,8 +61,9 @@ const Dashboard = () => {
       method: "PUT",
       headers: {
         id: userIDs,
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Headers": "*"
+        "access-control-allow-origin": "*",
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+        'Access-Control-Allow-Methods': '*',
       },
       body: JSON.stringify({
         id: userIDs,
@@ -87,8 +89,9 @@ const Dashboard = () => {
     const result = await fetch("https://page-by-page.onrender.com/api/user/delete", {
       method: "DELETE",
       headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Headers": "*"
+        "access-control-allow-origin": "*",
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+        'Access-Control-Allow-Methods': '*',
       },
       body: JSON.stringify({
         id: userIDs,

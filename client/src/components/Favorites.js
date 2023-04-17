@@ -21,8 +21,9 @@ const Favorites = () => {
       method: "GET",
       headers: {
         id: userIDs,
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Headers": "*"
+        "access-control-allow-origin": "*",
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+        'Access-Control-Allow-Methods': '*',
       },
     });
     let response = await result.json()
@@ -46,8 +47,9 @@ const Favorites = () => {
       const result = await fetch("https://page-by-page.onrender.com/api/favorite/remove", {
         method: "PUT",
         headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Headers": "*"
+          "access-control-allow-origin": "*",
+          'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+          'Access-Control-Allow-Methods': '*',
         },
         body: JSON.stringify({
           id: userIDs,

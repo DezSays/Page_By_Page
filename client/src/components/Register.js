@@ -27,8 +27,9 @@ const Register = () => {
     const result = await fetch("https://page-by-page.onrender.com/api/register", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Headers": "*"
+        "access-control-allow-origin": "*",
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+        'Access-Control-Allow-Methods': '*',
       },
       body: JSON.stringify({
         username: userName,

@@ -53,6 +53,7 @@ const Dashboard = () => {
   };
 
   const userUpdateFetch = async (e) => {
+    console.log('clicked')
     e.preventDefault();
     setShowForm(false);
 

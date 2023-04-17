@@ -4,7 +4,7 @@ import "../styles/Dashboard.css";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { useSelector } from "react-redux";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
   const [username, setUsername] = useState("");
@@ -16,7 +16,7 @@ const Dashboard = () => {
   const [show, setShow] = useState(false);
   const [show1, setShow1] = useState(false);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const userIDs = useSelector((state) => state.userID);
 
   const handleClose1 = () => setShow1(false);
@@ -34,7 +34,7 @@ const Dashboard = () => {
       headers: {
         id: userIDs,
         "Content-Type": "application/json",
-        "Access-Control-Allow-Headers": "*"
+        "Access-Control-Allow-Headers": "*",
       },
     });
     result
@@ -57,27 +57,30 @@ const Dashboard = () => {
     e.preventDefault();
     setShowForm(false);
 
-    const result = await fetch("https://page-by-page.onrender.com/api/userUpdate", {
-      method: "PUT",
-      headers: {
-        id: userIDs,
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Headers": "*"
-      },
-      body: JSON.stringify({
-        id: userIDs,
-        username: username,
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-        password: password,
-      }),
-    });
+    const result = await fetch(
+      "https://page-by-page.onrender.com/api/userUpdate",
+      {
+        method: "PUT",
+        headers: {
+          id: userIDs,
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Headers": "*",
+        },
+        body: JSON.stringify({
+          id: userIDs,
+          username: username,
+          firstName: firstName,
+          lastName: lastName,
+          email: email,
+          password: password,
+        }),
+      }
+    );
     let response = await result
       .json()
       .then((data) => {
         console.log(data);
-        navigate('/login')
+        navigate("/login");
       })
       .catch((error) => {
         console.log(error);
@@ -86,21 +89,24 @@ const Dashboard = () => {
   };
 
   const userDeleteFetch = async () => {
-    const result = await fetch("https://page-by-page.onrender.com/api/user/delete", {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Headers": "*"
-      },
-      body: JSON.stringify({
-        id: userIDs,
-      }),
-    });
+    const result = await fetch(
+      "https://page-by-page.onrender.com/api/user/delete",
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Headers": "*",
+        },
+        body: JSON.stringify({
+          id: userIDs,
+        }),
+      }
+    );
     let response = await result
       .json()
       .then((data) => {
         console.log(data);
-        navigate('/login')
+        navigate("/login");
       })
       .catch((error) => {
         console.log(error);
@@ -119,11 +125,16 @@ const Dashboard = () => {
         <img id="avatar-img" alt="user-avatar" src="../../user-avatar.png" />
         <h3>{username}</h3>
         <div id="account-btn-container">
-        <Button id="update-account-btn" onClick={userUpdateForm}>Update Account</Button>
-        <Button id="delete-account-btn" variant="danger" onClick={handleShow1}>
-          Delete Account
-        </Button>
-
+          <Button id="update-account-btn" onClick={userUpdateForm}>
+            Update Account
+          </Button>
+          <Button
+            id="delete-account-btn"
+            variant="danger"
+            onClick={handleShow1}
+          >
+            Delete Account
+          </Button>
         </div>
         {showForm && (
           <div
@@ -132,8 +143,8 @@ const Dashboard = () => {
           >
             <Modal show={show} onHide={handleClose}>
               <Modal.Header closeButton></Modal.Header>
-              <Modal.Body id="update-user-modal-body">
-                <form onSubmit={userUpdateFetch}>
+              <form onSubmit={userUpdateFetch}>
+                <Modal.Body id="update-user-modal-body">
                   <div>
                     Username:
                     <input
@@ -189,16 +200,16 @@ const Dashboard = () => {
                       onChange={(e) => setPassword(e.target.value)}
                     />
                   </div>
-                </form>
-              </Modal.Body>
-              <Modal.Footer>
-                <Button onClick={handleClose} variant="secondary">
-                  Cancel
-                </Button>
-                <Button type="submit" value="Submit">
-                  Save Changes
-                </Button>
-              </Modal.Footer>
+                </Modal.Body>
+                <Modal.Footer>
+                  <Button onClick={handleClose} variant="secondary">
+                    Cancel
+                  </Button>
+                  <Button type="submit" value="Submit">
+                    Save Changes
+                  </Button>
+                </Modal.Footer>
+              </form>
             </Modal>
           </div>
         )}

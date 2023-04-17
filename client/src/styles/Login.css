@@ -6,12 +6,16 @@
 
 
 }
+
 body{
   background-image: url('../../public/login-bg.jpg');
   background-size: cover;
-  color: white;
-
 }
+
+#unable-to-login{
+  color:white
+}
+
 html{
   width: 100vw;
   overflow-x: hidden;

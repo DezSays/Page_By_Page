@@ -94,7 +94,7 @@ const Login = () => {
               Sign in
             </MDBBtn>
           </form>
-          {isError ? <h4>Unable to login.</h4> : null}
+          {isError ? <h4 id="unable-to-login">Unable to login.</h4> : null}
           <p id="already-have-account">Don't have an account?</p>
 
           <MDBBtn onClick={handleClick} className="mb-4 w-100" size="lg">

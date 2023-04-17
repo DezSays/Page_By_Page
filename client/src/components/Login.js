@@ -31,7 +31,8 @@ const Login = () => {
     const result = await fetch('https://page-by-page.onrender.com/api/login', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Headers": "*"
         },
         body: JSON.stringify({
           email: email,

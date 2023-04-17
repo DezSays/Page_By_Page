@@ -22,6 +22,7 @@ const Favorites = () => {
       headers: {
         id: userIDs,
         "Content-Type": "application/json",
+        "Access-Control-Allow-Headers": "*"
       },
     });
     let response = await result.json()
@@ -46,6 +47,7 @@ const Favorites = () => {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
+          "Access-Control-Allow-Headers": "*"
         },
         body: JSON.stringify({
           id: userIDs,

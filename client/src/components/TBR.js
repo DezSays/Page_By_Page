@@ -21,6 +21,7 @@ const TBR = () => {
       headers: {
         id: userIDs,
         "Content-Type": "application/json",
+        "Access-Control-Allow-Headers": "*"
       },
     });
     result
@@ -45,6 +46,7 @@ const TBR = () => {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Headers": "*"
       },
       body: JSON.stringify({
         id: userIDs,

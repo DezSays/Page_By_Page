@@ -34,6 +34,7 @@ const Dashboard = () => {
       headers: {
         id: userIDs,
         "Content-Type": "application/json",
+        "Access-Control-Allow-Headers": "*"
       },
     });
     result
@@ -60,6 +61,7 @@ const Dashboard = () => {
       headers: {
         id: userIDs,
         "Content-Type": "application/json",
+        "Access-Control-Allow-Headers": "*"
       },
       body: JSON.stringify({
         id: userIDs,
@@ -86,6 +88,7 @@ const Dashboard = () => {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Headers": "*"
       },
       body: JSON.stringify({
         id: userIDs,

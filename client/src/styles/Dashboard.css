@@ -7,11 +7,6 @@
   bottom: 0;
 }
 
-#update-user-form{
-  display: flex;
-  flex-direction: column;
-}
-
 #top-div {
   position: absolute;
   top: 0;
@@ -36,6 +31,7 @@
 #update-user-modal-body{
   display: flex;
   justify-content: center;
+  flex-direction: column;
 }
 
 form input{

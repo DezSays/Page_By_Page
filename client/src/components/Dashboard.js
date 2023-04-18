@@ -53,7 +53,7 @@ const Dashboard = () => {
   };
 
   const userUpdateFetch = async (e) => {
-    console.log('clicked')
+    console.log("clicked");
     e.preventDefault();
     setShowForm(false);
 
@@ -157,6 +157,7 @@ const Dashboard = () => {
                     />
                   </div>
                   <div>
+                    <p></p>
                     First Name:
                     <input
                       type="text"
@@ -168,6 +169,7 @@ const Dashboard = () => {
                     />
                   </div>
                   <div>
+                    <p></p>
                     Last Name:
                     <input
                       type="text"
@@ -179,7 +181,8 @@ const Dashboard = () => {
                     />
                   </div>
                   <div>
-                    Email:
+                    <p></p>
+                    Email Address:
                     <input
                       type="email"
                       name="email"
@@ -190,6 +193,7 @@ const Dashboard = () => {
                     />
                   </div>
                   <div>
+                    <p></p>
                     Password:
                     <input
                       type="password"

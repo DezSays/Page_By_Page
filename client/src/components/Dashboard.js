@@ -143,7 +143,7 @@ const Dashboard = () => {
           >
             <Modal show={show} onHide={handleClose}>
               <Modal.Header closeButton></Modal.Header>
-              <form onSubmit={userUpdateFetch}>
+              <form id="update-user-form" onSubmit={userUpdateFetch}>
                 <Modal.Body id="update-user-modal-body">
                   <div>
                     Username:

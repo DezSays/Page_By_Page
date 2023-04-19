@@ -3,13 +3,13 @@
   content: "";
   flex: 1;
   height: 1px;
-
-
 }
 
 body{
   background-image: url('../../public/login-bg.jpg');
   background-size: cover;
+  background-repeat: no-repeat;
+  height:100vh;
 }
 
 #unable-to-login{

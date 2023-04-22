@@ -92,7 +92,6 @@ app.post("/api/register", async (req, res) => {
 
 app.post("/api/login", async (req, res) => {
   try {
-    console.log(req.body)
     let { email, password } = req.body;
     let user = await users.findOne({ where: { email: email } });
     if(user !== null)
@@ -366,7 +365,6 @@ app.delete("/api/user/delete", async (req, res) => {
   await users.destroy({ where: { id: userID } });
   res.json("User successfully deleted.");
 });
-
 
 //* Connection Good
 app.listen(PORT, async () => {

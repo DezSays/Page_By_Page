@@ -27,7 +27,7 @@ The server architecture consists of the following main components:
 
 ## Database Schema
 
-The database schema for the server code in this GitHub repository is defined by the Sequelize ORM (Object-Relational Mapping) library, which maps the JavaScript objects to database tables and their attributes to columns.
+The database schema for the server code is defined by the Sequelize ORM (Object-Relational Mapping) library, which maps the JavaScript objects to database tables and their attributes to columns.
 
 The database schema consists of a single table named `users`, which has the following columns:
 
@@ -210,10 +210,6 @@ app.put("/api/tbr/remove", async (req, res) => {
   }
 });
 ```
-
-## Screenshots
-
-- add screenshots here
 
 ## Contributing
 

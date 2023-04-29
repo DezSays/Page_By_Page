@@ -127,7 +127,7 @@ padding: 0% 2% 0% 2%
   margin-bottom:10%;
 }
 
-#home-card-btn-container{
+#home-card-btn-container, #card-btn-txt{
   display: flex;
   justify-content: left;
   margin:0%

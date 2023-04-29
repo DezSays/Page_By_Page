@@ -38,7 +38,7 @@ const BaseLayout = (props) => {
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>
-          <Button onClick={handleSignOut}>
+          <Button id="btn-sign-out" onClick={handleSignOut}>
             <Link id="sign-out-btn" to="/login">Sign Out</Link>
             </Button>
         </Container>

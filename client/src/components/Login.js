@@ -67,7 +67,7 @@ const Login = () => {
           />
         </MDBCol>
 
-        <MDBCol col="4" md="6">
+        <MDBCol id="login-container" col="4" md="6">
           <h1 id="h1-pbp">Page by Page</h1>
           <br />
           <form onSubmit={handleSubmit}>

@@ -22,11 +22,15 @@ html{
 }
 
 #formControlLg{
-  color: white;
+  color: blue;
   font-weight: bold;
 }
 
 #h1-pbp, #already-have-account{
   text-align: center;
   color: white;
+}
+
+#login-container{
+  padding-right: 1.5%;
 }

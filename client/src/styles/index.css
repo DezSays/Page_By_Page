@@ -76,7 +76,8 @@ code {
 }
 
 #sign-out-btn{
-  color:white
+  color:white;
+  padding-right: 2%;
 }
 
 .search{

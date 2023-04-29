@@ -22,7 +22,7 @@ const BaseLayout = (props) => {
       <>
       <Navbar id="navbar-layout" expand="lg">
         <Container fluid>
-          <Navbar.Brand href="/">Page by Page</Navbar.Brand>
+          <Navbar.Brand href="/login">Page by Page</Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" id="nav-collapse" />
           <Navbar.Collapse id="navbarScroll">
             <Nav

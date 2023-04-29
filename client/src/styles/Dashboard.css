@@ -9,7 +9,6 @@
 #root,body{
   background-image: linear-gradient(to right top, #0d6efd, #317afa, #4885f7, #5c90f3, #6e9aee, #67a7f3, #65b3f6, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
   background-size: cover;
-  
 }
 #top-div {
   position: absolute;

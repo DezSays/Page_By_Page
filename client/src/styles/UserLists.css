@@ -11,7 +11,7 @@
 }
 
 .content h2:nth-child(1) {
-  color: #0d6efd;
+  color: black;
 }
 
 .content h2:nth-child(2) {
@@ -116,9 +116,10 @@ height:100%
 -webkit-box-orient: vertical;
 overflow: hidden;
 text-overflow: ellipsis;
-margin-bottom:35%;
-width:90%;
+margin:0% 10% 35% 10%;
+width:100%;
 font-size: medium;
+padding: 0% 2% 0% 2%
 
 }
 
@@ -126,6 +127,11 @@ font-size: medium;
   margin-bottom:10%;
 }
 
+#home-card-btn-container{
+  display: flex;
+  justify-content: left;
+  margin:0%
+}
 #card-body-home.card-body{
   text-align: center;
   display: flex;

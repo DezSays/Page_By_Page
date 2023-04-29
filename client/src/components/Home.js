@@ -196,13 +196,14 @@ const Home = () => {
       <div>
         <div className="search">
           <input
+          id="input-search"
             type="text"
             placeholder="Flowers"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             onKeyUp={searchBook}
           />
-          <Button variant="warning" onClick={fetchBooks}>
+          <Button id="search-btn-input" variant="warning" onClick={fetchBooks}>
             Search
           </Button>
         </div>
@@ -243,7 +244,7 @@ const Home = () => {
                           <Card.Text id="card-description-home">
                             {e.volumeInfo.description}
                           </Card.Text>
-                          <Card.Text>
+                          <Card.Text id="home-card-btn-container">
                             <Button
                               id="home-card-btn-details"
                               onClick={handleClick}
@@ -306,13 +307,14 @@ const Home = () => {
       <div>
         <div className="search">
           <input
+           
             type="text"
             placeholder="Flowers"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             onKeyUp={searchBook}
           />
-          <Button variant="warning" onClick={fetchBooks}>
+          <Button variant="warning"  id="search-btn-input" onClick={fetchBooks}>
             Search
           </Button>
         </div>

@@ -90,3 +90,13 @@ code {
   justify-content: center;
   margin:1%;
 }
+
+input{
+  border-radius: 40%;
+  width: 20%;
+  text-align: center;
+}
+
+#search-btn-input{
+  margin:.5%
+}

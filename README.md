@@ -119,10 +119,6 @@ Overall, the tech stack used in the server-side code of the Page_By_Page project
 
 ### API Endpoints
 
-The following API endpoints are available for interacting with the server:
-
-### Endpoints
-
 This code starts the Express server and listens for incoming requests on the specified `PORT`. The `app.listen()` method takes two arguments: the `PORT` number and a callback function that will be executed once the server starts listening on the specified port. The callback function logs a message to the console indicating that the server is listening on the specified port. It then attempts to authenticate the database connection using Sequelize's `authenticate()` method. If the authentication is successful, the function logs a message to the console indicating that the connection has been established successfully. This means that the server can communicate with the database and perform operations on it. If the authentication fails, the function logs an error message to the console indicating that the server was unable to connect to the database. This could be due to an incorrect database configuration or network issues. Overall, this code initializes the Express server, sets it to listen on a specified port, and verifies that it can connect to the database. This is an important step in ensuring that the application is functioning properly and is able to access and manipulate the data stored in the database.
 
 ```javascript

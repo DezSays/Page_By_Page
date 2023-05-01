@@ -80,21 +80,6 @@ Update Account
 
 ## Server-Side Details
 
-### Server Architecture
-
-The server is built using the following technologies:
-
-- Express.js
-- PostgreSQL
-- Sequelize ORM
-
-The server architecture consists of the following main components:
-
-- **Routes**: Handles incoming HTTP requests and delegates the corresponding request to the appropriate controller.
-- **Controllers**: Contains the business logic for processing requests and returning responses.
-- **Models**: Represents the database schema and provides an interface for interacting with the database.
-- **Middleware**: Contains functions that are executed before or after a request is processed. Examples include authentication and error handling middleware.
-
 ### Database Schema
 
 The database schema for the server code is defined by the Sequelize ORM (Object-Relational Mapping) library, which maps the JavaScript objects to database tables and their attributes to columns.

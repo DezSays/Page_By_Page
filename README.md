@@ -1,10 +1,10 @@
 # Page_By_Page
 
-# Client-Side Details
+## Client-Side Details
 
 Page By Page is a web application that is designed to allow you to search for books and create a personalized bookshelf. Customize your profile by adding books to the TBR (To Be Read), Read, or Favorites bookshelf. From your bookshelves, you can click to preview the selected book on Google Books. The application is built using JavaScript, HTML, and CSS. Access the site [here](https://main.d2sh501brp4jaq.amplifyapp.com/)!
 
-## Tech Stack
+### Tech Stack
 
 The Page By Page client-side application is built using the following technologies:
 
@@ -14,27 +14,27 @@ The Page By Page client-side application is built using the following technologi
 - **Bootstrap**: Bootstrap is used for styling the application's user interface, providing a responsive and modern design.
 - **Git**: Git is used for version control, allowing the development team to collaborate on the application's codebase.
 
-## Features
+### Features
 
 The Page By Page application is designed to be a user-friendly and efficient way for people to search and save books online.
 
-## User Authentication
+### User Authentication
 
 Users are able to create an account and log in to access the application's features. This application uses Redux for user authentication, allowing users to securely log in and access the application's features.
 
-## Bookshelf
+### Bookshelf
 
 The user's profile is where the bookshelves can be found, and users can view the list of books they have added to their collection. The bookshelf shows book covers, titles, authors, and a small snippet of the description. Users can click on a book to view more information about it or preview the book on Google Books.
 
-## Book Search
+### Book Search
 
 Users can search for books by title or author and add them to their bookshelf. Book results are provided by Google Books API.
 
-## Progress Tracking
+### Progress Tracking
 
 The application allows users to track books that they have already read, books they would like to read, and their favorites.
 
-## Future Development
+### Future Development
 
 - Implement a dark mode feature for users who prefer low-light settings.
 - Improve the search feature to allow users to search by genre, publication date, and other criteria.
@@ -42,7 +42,7 @@ The application allows users to track books that they have already read, books t
 - Implement a social feature that allows users to share their reading progress and book recommendations with friends.
 - Expand the selection of supported languages.
 
-## Screenshots
+### Screenshots
 
 Landing Page
 ![Landing Page](./client/public/landing-page-screenshot.png)
@@ -78,9 +78,9 @@ Update Account
 ![Update Account](./client/public/update-account-screenshot.png)
 
 
-# Server-Side Details
+## Server-Side Details
 
-## Server Architecture
+### Server Architecture
 
 The server is built using the following technologies:
 
@@ -95,7 +95,7 @@ The server architecture consists of the following main components:
 - **Models**: Represents the database schema and provides an interface for interacting with the database.
 - **Middleware**: Contains functions that are executed before or after a request is processed. Examples include authentication and error handling middleware.
 
-## Database Schema
+### Database Schema
 
 The database schema for the server code is defined by the Sequelize ORM (Object-Relational Mapping) library, which maps the JavaScript objects to database tables and their attributes to columns.
 
@@ -113,7 +113,7 @@ The database schema consists of a single table named `users`, which has the foll
 
 The data type of each column is defined using the Sequelize library's DataTypes module, which provides a set of data types that can be used to define the schema. The schema is defined in the `models` directory of the server code, specifically in the `users.js` file.
 
-## Tech Stack
+### Tech Stack
 
 The tech stack used in the server-side code of the Page_By_Page project can be found in the `package.json` file. The file lists all the dependencies required to run the server and build the application.
 
@@ -132,7 +132,7 @@ Other dependencies used in the project include:
 
 Overall, the tech stack used in the server-side code of the Page_By_Page project is well-suited for building a robust, scalable, and secure web application.
 
-## API Endpoints
+### API Endpoints
 
 The following API endpoints are available for interacting with the server:
 
@@ -281,6 +281,6 @@ app.put("/api/tbr/remove", async (req, res) => {
 });
 ```
 
-## Contributing
+### Contributing
 
 If you would like to contribute to this repository, please fork the repository, make your changes, and submit a pull request.

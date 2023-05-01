@@ -1,14 +1,6 @@
-
-
 # Page_By_Page - PostgreSQL Database and Express Server
 
 This repository contains the PostgreSQL database and Express server for the "Page By Page" web application, a platform where users can search book titles or authors and save them to their bookshelf.
-
-## Live site
-
-- add deployed backend link here
-- add deployed frontend link here
-- demo
 
 ## Server Architecture
 

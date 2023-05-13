@@ -6,27 +6,30 @@ import Row from "react-bootstrap/Row";
 import { useSelector } from "react-redux";
 import "../styles/UserLists.css";
 
-
 const Favorites = () => {
   const [favoriteList, setFavoriteList] = useState([]);
   const userIDs = useSelector((state) => state.userID);
   const [favoriteFormat, setFavoriteFormat] = useState([]);
-  
+
   useEffect(() => {
     favoriteFetch();
   }, [userIDs, setFavoriteFormat]);
 
   const favoriteFetch = async () => {
-    const result = await fetch("https://page-by-page.onrender.com/api/favoriteList", {
-      method: "GET",
-      headers: {
-        id: userIDs,
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Headers": "*"
-      },
-    });
-    let response = await result.json()
-    .then((data) => {
+    const result = await fetch(
+      "https://page-by-page.onrender.com/api/favoriteList",
+      {
+        method: "GET",
+        headers: {
+          id: userIDs,
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Headers": "*",
+        },
+      }
+    );
+    let response = await result
+      .json()
+      .then((data) => {
         setFavoriteList(data);
         console.log(data);
       })
@@ -34,27 +37,30 @@ const Favorites = () => {
         console.log(error);
         return;
       });
-      let slicedArr = [];
-      for (let i = 0; i < favoriteList.length; i += 3) {
-        slicedArr.push(favoriteList.slice(i, i + 3));
-      }
-      setFavoriteFormat(slicedArr);
-    };
-    
-    const favoriteDelete = async (e) => {
-      console.log(e.target.value)
-      const result = await fetch("https://page-by-page.onrender.com/api/favorite/remove", {
+    let slicedArr = [];
+    for (let i = 0; i < favoriteList.length; i += 3) {
+      slicedArr.push(favoriteList.slice(i, i + 3));
+    }
+    setFavoriteFormat(slicedArr);
+  };
+
+  const favoriteDelete = async (e) => {
+    console.log(e.target.value);
+    const result = await fetch(
+      "https://page-by-page.onrender.com/api/favorite/remove",
+      {
         method: "PUT",
         headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Headers": "*"
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Headers": "*",
         },
         body: JSON.stringify({
           id: userIDs,
           favorite: e.target.value,
         }),
-      });
-      result
+      }
+    );
+    result
       .json()
       .then((data) => {
         console.log(data);
@@ -72,19 +78,14 @@ const Favorites = () => {
       });
   };
 
-
   return (
     <div>
       <div className="content" onMouseEnter={favoriteFetch}>
-        <h2>
-        ~ Mouse over to see books ~
-        </h2>
-        <h2>
-        ~ Mouse over to see books ~
-        </h2>
-        </div>
+        <h2>~ Mouse over to see books ~</h2>
+        <h2>~ Mouse over to see books ~</h2>
+      </div>
       <Row xs={2} sm={3} md={5} lg={6} xl={8} xxl={10} id="tbr-row">
-      {favoriteFormat.map((e) => {
+        {favoriteFormat.map((e) => {
           return (
             <Col id="tbr-col">
               <Card id="tbr-card">
@@ -98,11 +99,21 @@ const Favorites = () => {
                   <Card.Title id="tbr-card-title">{e[0]}</Card.Title>
                   <Card.Text onMouseOver={favoriteFetch}>
                     <Button className="card-btn">
-                      <a id="preview-book-href" href={e[1]} target="_blank" rel="noreferrer">
+                      <a
+                        id="preview-book-href"
+                        href={e[1]}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
                         Buy
                       </a>
                     </Button>
-                    <Button variant="danger" className="card-btn" value={e[0]} onClick={favoriteDelete}>
+                    <Button
+                      variant="danger"
+                      className="card-btn"
+                      value={e[0]}
+                      onClick={favoriteDelete}
+                    >
                       Remove
                     </Button>
                   </Card.Text>
@@ -115,4 +126,4 @@ const Favorites = () => {
     </div>
   );
 };
-export default Favorites
+export default Favorites;

@@ -59,7 +59,7 @@ const BookDetails = ({ bookList }) => {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        "Access-Control-Allow-Headers": "*"
+        "Access-Control-Allow-Headers": "*",
       },
       body: JSON.stringify({
         id: userID,
@@ -83,19 +83,22 @@ const BookDetails = ({ bookList }) => {
   const addFavorite = async (e) => {
     setFavorite(e.target.value);
     e.preventDefault();
-    const result = await fetch("https://page-by-page.onrender.com/api/favorite", {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Headers": "*"
-      },
-      body: JSON.stringify({
-        id: userID,
-        favorite: title,
-        preview: preview,
-        thumbnail: thumbnail,
-      }),
-    });
+    const result = await fetch(
+      "https://page-by-page.onrender.com/api/favorite",
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Headers": "*",
+        },
+        body: JSON.stringify({
+          id: userID,
+          favorite: title,
+          preview: preview,
+          thumbnail: thumbnail,
+        }),
+      }
+    );
     await result
       .json()
       .then((data) => {
@@ -114,7 +117,7 @@ const BookDetails = ({ bookList }) => {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        "Access-Control-Allow-Headers": "*"
+        "Access-Control-Allow-Headers": "*",
       },
       body: JSON.stringify({
         id: userID,
@@ -136,7 +139,7 @@ const BookDetails = ({ bookList }) => {
 
   return (
     <>
-        <Row xs={2} sm={3} md={4} lg={5} xl={6} xxl={7} id="tbr-row">
+      <Row xs={2} sm={3} md={4} lg={5} xl={6} xxl={7} id="tbr-row">
         {bookList.map((e) => {
           let thumbnail =
             e.volumeInfo.imageLinks && e.volumeInfo.imageLinks.smallThumbnail;
@@ -144,43 +147,42 @@ const BookDetails = ({ bookList }) => {
           if (thumbnail !== undefined) {
             return (
               <>
-                  <Col id="tbr-col">
-                    <div id="home-display-book-details-div"
-                      onClick={() => {
-                        setShow(true);
-                        setBook(e);
-                      }}
-                    >
-                      <Card id="home-card">
-                        <Card.Img
-                          className="mx-auto"
-                          id="tbr-card-img"
-                          variant="top"
-                          src={thumbnail}
-                        />
-                        <Card.Body id="card-body-home">
-                          <Card.Title id="tbr-card-title">
-                            {e.volumeInfo.title}
-                          </Card.Title>
-                          <Card.Text id="card-description-home">
-                            {e.volumeInfo.description}
-                            </Card.Text>
-                            <Card.Text id="card-btn-txt">
-                            <Button 
+                <Col id="tbr-col">
+                  <div
+                    id="home-display-book-details-div"
+                    onClick={() => {
+                      setShow(true);
+                      setBook(e);
+                    }}
+                  >
+                    <Card id="home-card">
+                      <Card.Img
+                        className="mx-auto"
+                        id="tbr-card-img"
+                        variant="top"
+                        src={thumbnail}
+                      />
+                      <Card.Body id="card-body-home">
+                        <Card.Title id="tbr-card-title">
+                          {e.volumeInfo.title}
+                        </Card.Title>
+                        <Card.Text id="card-description-home">
+                          {e.volumeInfo.description}
+                        </Card.Text>
+                        <Card.Text id="card-btn-txt">
+                          <Button
                             id="home-card-btn-details"
                             onClick={handleClick}
                             value={e.selfLink}
-                            className="card-btn" 
-                            >
-
-                              Details
-
+                            className="card-btn"
+                          >
+                            Details
                           </Button>
-                            </Card.Text>
-                        </Card.Body>
-                      </Card>
-                    </div>
-                  </Col>
+                        </Card.Text>
+                      </Card.Body>
+                    </Card>
+                  </div>
+                </Col>
               </>
             );
           }

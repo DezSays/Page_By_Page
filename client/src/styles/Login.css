@@ -5,32 +5,33 @@
   height: 1px;
 }
 
-body{
-  background-image: url('../../public/login-bg.jpg');
+body {
+  background-image: url("../../public/login-bg.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  height:100vh;
+  height: 100vh;
 }
 
-#unable-to-login{
-  color:white
+#unable-to-login {
+  color: white;
 }
 
-html{
+html {
   width: 100vw;
   overflow-x: hidden;
 }
 
-#formControlLg{
+#formControlLg {
   color: blue;
   font-weight: bold;
 }
 
-#h1-pbp, #already-have-account{
+#h1-pbp,
+#already-have-account {
   text-align: center;
   color: white;
 }
 
-#login-container{
+#login-container {
   padding-right: 1.5%;
 }

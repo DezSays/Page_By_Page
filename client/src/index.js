@@ -9,7 +9,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
-import Footer from "./components/Footer"
+import Footer from "./components/Footer";
 import Register from "./components/Register";
 import AboutApp from "./components/AboutApp";
 
@@ -20,7 +20,7 @@ import reducer from "./reducers/reducer";
 const store = createStore(
   reducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-); 
+);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -41,4 +41,3 @@ root.render(
     </Provider>
   </React.StrictMode>
 );
-

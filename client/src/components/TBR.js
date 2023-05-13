@@ -16,14 +16,17 @@ const TBR = () => {
   }, [userIDs, setTbrFormat]);
 
   const tbrFetch = async () => {
-    const result = await fetch("https://page-by-page.onrender.com/api/tbrList", {
-      method: "GET",
-      headers: {
-        id: userIDs,
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Headers": "*"
-      },
-    });
+    const result = await fetch(
+      "https://page-by-page.onrender.com/api/tbrList",
+      {
+        method: "GET",
+        headers: {
+          id: userIDs,
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Headers": "*",
+        },
+      }
+    );
     result
       .json()
       .then((data) => {
@@ -42,17 +45,20 @@ const TBR = () => {
   };
 
   const tbrDelete = async (e) => {
-    const result = await fetch("https://page-by-page.onrender.com/api/tbr/remove", {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Headers": "*"
-      },
-      body: JSON.stringify({
-        id: userIDs,
-        tbr: e.target.value,
-      }),
-    });
+    const result = await fetch(
+      "https://page-by-page.onrender.com/api/tbr/remove",
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Headers": "*",
+        },
+        body: JSON.stringify({
+          id: userIDs,
+          tbr: e.target.value,
+        }),
+      }
+    );
     result
       .json()
       .then((data) => {
@@ -74,13 +80,9 @@ const TBR = () => {
   return (
     <div>
       <div className="content" onMouseEnter={tbrFetch}>
-        <h2>
-        ~ Mouse over to see books ~
-        </h2>
-        <h2>
-        ~ Mouse over to see books ~
-        </h2>
-        </div>
+        <h2>~ Mouse over to see books ~</h2>
+        <h2>~ Mouse over to see books ~</h2>
+      </div>
       <Row xs={2} sm={3} md={5} lg={6} xl={8} xxl={10} id="tbr-row">
         {tbrFormat.map((e) => {
           return (
@@ -96,11 +98,21 @@ const TBR = () => {
                   <Card.Title id="tbr-card-title">{e[0]}</Card.Title>
                   <Card.Text onMouseOver={tbrFetch}>
                     <Button className="card-btn">
-                      <a id="preview-book-href" href={e[1]} target="_blank" rel="noreferrer">
+                      <a
+                        id="preview-book-href"
+                        href={e[1]}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
                         Buy
                       </a>
                     </Button>
-                    <Button variant="danger" className="card-btn" value={e[0]} onClick={tbrDelete}>
+                    <Button
+                      variant="danger"
+                      className="card-btn"
+                      value={e[0]}
+                      onClick={tbrDelete}
+                    >
                       Remove
                     </Button>
                   </Card.Text>

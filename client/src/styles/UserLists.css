@@ -62,15 +62,15 @@
   padding: 5%;
 }
 
-.card-text{
-  margin-left:10%
+.card-text {
+  margin-left: 10%;
 }
 
 #tbr-card-title {
   font-size: 100%;
-  width:100%;
-  white-space: nowrap; 
-  overflow: hidden; 
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
   text-overflow: ellipsis;
   height: 5vh;
 }
@@ -93,46 +93,52 @@
   margin: 2%;
 }
 
-#uncontrolled-tab-example-tab-tbr, #uncontrolled-tab-example-tab-favorites, #uncontrolled-tab-example-tab-read{
-  color:white;
+#uncontrolled-tab-example-tab-tbr,
+#uncontrolled-tab-example-tab-favorites,
+#uncontrolled-tab-example-tab-read {
+  color: white;
   font-size: large;
 }
 
-#uncontrolled-tab-example-tab-tbr:hover, #uncontrolled-tab-example-tab-favorites:hover, #uncontrolled-tab-example-tab-read:hover{
-  color:#0d6efd
+#uncontrolled-tab-example-tab-tbr:hover,
+#uncontrolled-tab-example-tab-favorites:hover,
+#uncontrolled-tab-example-tab-read:hover {
+  color: #0d6efd;
 }
 
-#uncontrolled-tab-example-tab-tbr[aria-selected="true"], #uncontrolled-tab-example-tab-favorites[aria-selected="true"], #uncontrolled-tab-example-tab-read[aria-selected="true"]{
-  color:#0d6efd
+#uncontrolled-tab-example-tab-tbr[aria-selected="true"],
+#uncontrolled-tab-example-tab-favorites[aria-selected="true"],
+#uncontrolled-tab-example-tab-read[aria-selected="true"] {
+  color: #0d6efd;
 }
 
-#home-display-book-details-div{
-height:100%
+#home-display-book-details-div {
+  height: 100%;
 }
 
-#card-description-home{
+#card-description-home {
   display: -webkit-box;
--webkit-line-clamp: 2;
--webkit-box-orient: vertical;
-overflow: hidden;
-text-overflow: ellipsis;
-margin:0% 10% 35% 10%;
-width:100%;
-font-size: medium;
-padding: 0% 2% 0% 2%
-
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0% 10% 35% 10%;
+  width: 100%;
+  font-size: medium;
+  padding: 0% 2% 0% 2%;
 }
 
-#home-card-btn-details{
-  margin-bottom:10%;
+#home-card-btn-details {
+  margin-bottom: 10%;
 }
 
-#home-card-btn-container, #card-btn-txt{
+#home-card-btn-container,
+#card-btn-txt {
   display: flex;
   justify-content: left;
-  margin:0%
+  margin: 0%;
 }
-#card-body-home.card-body{
+#card-body-home.card-body {
   text-align: center;
   display: flex;
   justify-content: center;

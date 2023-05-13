@@ -24,20 +24,23 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const result = await fetch("https://page-by-page.onrender.com/api/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Headers": "*"
-      },
-      body: JSON.stringify({
-        username: userName,
-        password: password,
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-      }),
-    });
+    const result = await fetch(
+      "https://page-by-page.onrender.com/api/register",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Headers": "*",
+        },
+        body: JSON.stringify({
+          username: userName,
+          password: password,
+          firstName: firstName,
+          lastName: lastName,
+          email: email,
+        }),
+      }
+    );
     if (result.status === 403) {
       setIsError(true);
       return;

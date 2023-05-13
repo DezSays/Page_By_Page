@@ -6,27 +6,30 @@ import Row from "react-bootstrap/Row";
 import { useSelector } from "react-redux";
 import "../styles/UserLists.css";
 
-
 const Read = () => {
   const [readList, setReadList] = useState([]);
   const userIDs = useSelector((state) => state.userID);
   const [readFormat, setReadFormat] = useState([]);
-  
+
   useEffect(() => {
     readFetch();
   }, [userIDs, setReadFormat]);
 
   const readFetch = async () => {
-    const result = await fetch("https://page-by-page.onrender.com/api/readList", {
-      method: "GET",
-      headers: {
-        id: userIDs,
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Headers": "*"
-      },
-    });
-    let response = await result.json()
-    .then((data) => {
+    const result = await fetch(
+      "https://page-by-page.onrender.com/api/readList",
+      {
+        method: "GET",
+        headers: {
+          id: userIDs,
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Headers": "*",
+        },
+      }
+    );
+    let response = await result
+      .json()
+      .then((data) => {
         setReadList(data);
         console.log(data);
       })
@@ -34,27 +37,30 @@ const Read = () => {
         console.log(error);
         return;
       });
-      let slicedArr = [];
-      for (let i = 0; i < readList.length; i += 3) {
-        slicedArr.push(readList.slice(i, i + 3));
-      }
-      setReadFormat(slicedArr);
-    };
-    
-    const readDelete = async (e) => {
-      console.log(e.target.value)
-      const result = await fetch("https://page-by-page.onrender.com/api/read/remove", {
+    let slicedArr = [];
+    for (let i = 0; i < readList.length; i += 3) {
+      slicedArr.push(readList.slice(i, i + 3));
+    }
+    setReadFormat(slicedArr);
+  };
+
+  const readDelete = async (e) => {
+    console.log(e.target.value);
+    const result = await fetch(
+      "https://page-by-page.onrender.com/api/read/remove",
+      {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          "Access-Control-Allow-Headers": "*"
+          "Access-Control-Allow-Headers": "*",
         },
         body: JSON.stringify({
           id: userIDs,
           read: e.target.value,
         }),
-      });
-      result
+      }
+    );
+    result
       .json()
       .then((data) => {
         console.log(data);
@@ -72,19 +78,14 @@ const Read = () => {
       });
   };
 
-
   return (
     <div>
       <div className="content" onMouseEnter={readFetch}>
-        <h2>
-        ~ Mouse over to see books ~
-        </h2>
-        <h2>
-        ~ Mouse over to see books ~
-        </h2>
-        </div>
+        <h2>~ Mouse over to see books ~</h2>
+        <h2>~ Mouse over to see books ~</h2>
+      </div>
       <Row xs={2} sm={3} md={5} lg={6} xl={8} xxl={10} id="tbr-row">
-      {readFormat.map((e) => {
+        {readFormat.map((e) => {
           return (
             <Col id="tbr-col">
               <Card id="tbr-card">
@@ -98,11 +99,21 @@ const Read = () => {
                   <Card.Title id="tbr-card-title">{e[0]}</Card.Title>
                   <Card.Text onMouseOver={readFetch}>
                     <Button className="card-btn">
-                      <a id="preview-book-href" href={e[1]} target="_blank" rel="noreferrer">
+                      <a
+                        id="preview-book-href"
+                        href={e[1]}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
                         Buy
                       </a>
                     </Button>
-                    <Button variant="danger" className="card-btn" value={e[0]} onClick={readDelete}>
+                    <Button
+                      variant="danger"
+                      className="card-btn"
+                      value={e[0]}
+                      onClick={readDelete}
+                    >
                       Remove
                     </Button>
                   </Card.Text>
@@ -115,4 +126,4 @@ const Read = () => {
     </div>
   );
 };
-export default Read
+export default Read;

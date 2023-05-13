@@ -1,13 +1,29 @@
 #container {
-  max-height:90%;
+  max-height: 90%;
   position: absolute;
   top: 10%;
   right: 0;
   left: 0;
   bottom: 0;
 }
-#root,body,.tab-content{
-  background-image: linear-gradient(to right top, #0d6efd, #317afa, #4885f7, #5c90f3, #6e9aee, #67a7f3, #65b3f6, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+#root,
+body,
+.tab-content {
+  background-image: linear-gradient(
+    to right top,
+    #0d6efd,
+    #317afa,
+    #4885f7,
+    #5c90f3,
+    #6e9aee,
+    #67a7f3,
+    #65b3f6,
+    #69bff8,
+    #52cffe,
+    #41dfff,
+    #46eefa,
+    #5ffbf1
+  );
   background-size: cover;
   background-repeat: none;
 }
@@ -18,7 +34,7 @@
   left: 0;
   bottom: 60%;
   text-align: center;
-  color:white
+  color: white;
 }
 #bottom-div {
   position: absolute;
@@ -28,27 +44,28 @@
   bottom: 0;
   text-align: center;
 }
-#avatar-img{
+#avatar-img {
   max-height: 30%;
 }
 
-#update-user-modal-body{
+#update-user-modal-body {
   display: flex;
   justify-content: center;
   flex-direction: column;
 }
 
-form input{
+form input {
   padding-left: 50%;
 }
 
-#account-btn-container{
+#account-btn-container {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-#update-account-btn, #delete-account-btn {
-  margin:.5%;
+#update-account-btn,
+#delete-account-btn {
+  margin: 0.5%;
   font-size: small;
-} 
+}

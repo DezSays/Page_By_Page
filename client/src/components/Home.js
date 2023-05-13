@@ -113,7 +113,7 @@ const Home = () => {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        "Access-Control-Allow-Headers": "*"
+        "Access-Control-Allow-Headers": "*",
       },
       body: JSON.stringify({
         id: userID,
@@ -142,7 +142,7 @@ const Home = () => {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          "Access-Control-Allow-Headers": "*"
+          "Access-Control-Allow-Headers": "*",
         },
         body: JSON.stringify({
           id: userID,
@@ -170,7 +170,7 @@ const Home = () => {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        "Access-Control-Allow-Headers": "*"
+        "Access-Control-Allow-Headers": "*",
       },
       body: JSON.stringify({
         id: userID,
@@ -196,7 +196,7 @@ const Home = () => {
       <div>
         <div className="search">
           <input
-          id="input-search"
+            id="input-search"
             type="text"
             placeholder="Flowers"
             value={search}
@@ -307,14 +307,13 @@ const Home = () => {
       <div>
         <div className="search">
           <input
-           
             type="text"
             placeholder="Flowers"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             onKeyUp={searchBook}
           />
-          <Button variant="warning"  id="search-btn-input" onClick={fetchBooks}>
+          <Button variant="warning" id="search-btn-input" onClick={fetchBooks}>
             Search
           </Button>
         </div>

@@ -16,19 +16,19 @@ The Page By Page client-side application is built using the following technologi
 
 The Page By Page application is designed to be a user-friendly and efficient way for people to search and save books online.
 
-## User Authentication
+### User Authentication
 
 Users are able to create an account and log in to access the application's features. This application uses Redux for user authentication, allowing users to securely log in and access the application's features.
 
-## Bookshelf
+### Bookshelf
 
 The user's profile is where the bookshelves can be found, and users can view the list of books they have added to their collection. The bookshelf shows book covers, titles, authors, and a small snippet of the description. Users can click on a book to view more information about it or preview the book on Google Books.
 
-## Book Search
+### Book Search
 
 Users can search for books by title or author and add them to their bookshelf. Book results are provided by Google Books API.
 
-## Progress Tracking
+### Progress Tracking
 
 The application allows users to track books that they have already read, books they would like to read, and their favorites.
 

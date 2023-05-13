@@ -1,8 +1,86 @@
-# Page_By_Page - PostgreSQL Database and Express Server
+# Page_By_Page
 
-This repository contains the PostgreSQL database and Express server for the "Page By Page" web application, a platform where users can search book titles or authors and save them to their bookshelf.
+## Client-Side Details
 
-## Database Schema
+Page By Page is a web application that is designed to allow you to search for books and create a personalized bookshelf. Customize your profile by adding books to the TBR (To Be Read), Read, or Favorites bookshelf. From your bookshelves, you can click to preview the selected book on Google Books. The application is built using JavaScript, HTML, and CSS. Access the site [here](https://main.d2sh501brp4jaq.amplifyapp.com/)!
+
+### Tech Stack
+
+The Page By Page client-side application is built using the following technologies:
+
+- **React**: The application is built using the React JavaScript library, which is used for building user interfaces.
+- **Redux**: Redux is used for state management in the application, allowing the application's data to be managed in a single, centralized location.
+- **React Router**: React Router is used for client-side routing in the application, allowing the application to have multiple views without requiring a page refresh.
+- **Bootstrap**: Bootstrap is used for styling the application's user interface, providing a responsive and modern design.
+- **Git**: Git is used for version control, allowing the development team to collaborate on the application's codebase.
+
+### Features
+
+The Page By Page application is designed to be a user-friendly and efficient way for people to search and save books online.
+
+#### User Authentication
+
+Users are able to create an account and log in to access the application's features. This application uses Redux for user authentication, allowing users to securely log in and access the application's features.
+
+#### Bookshelf
+
+The user's profile is where the bookshelves can be found, and users can view the list of books they have added to their collection. The bookshelf shows book covers, titles, authors, and a small snippet of the description. Users can click on a book to view more information about it or preview the book on Google Books.
+
+#### Book Search
+
+Users can search for books by title or author and add them to their bookshelf. Book results are provided by Google Books API.
+
+#### Progress Tracking
+
+The application allows users to track books that they have already read, books they would like to read, and their favorites.
+
+### Future Development
+
+- Implement a dark mode feature for users who prefer low-light settings.
+- Improve the search feature to allow users to search by genre, publication date, and other criteria.
+- Allow users to leave ratings and reviews for books they have read.
+- Implement a social feature that allows users to share their reading progress and book recommendations with friends.
+- Expand the selection of supported languages.
+
+### Screenshots
+
+Landing Page
+![Landing Page](./client/public/landing-page-screenshot.png)
+
+Register Page
+![Register Page](./client/public/register-page-screenshot.png)
+
+Login Page
+![Login Page](./client/public/login-page-screenshot.png)
+
+Home Page
+![Home Page](./client/public/home-page-screenshot.png)
+
+Author Search Result
+![Author Search Result](./client/public/search-author-screenshot.png)
+
+Title Search Result
+![Title Search Result](./client/public/search-title-screenshot.png)
+
+Subject Search Result
+![Subject Search Result](./client/public/search-subject-screenshot.png)
+
+Book Details
+![Book Details](./client/public/book-details-screenshot.png)
+
+Dashboard
+![Dashboard](./client/public/dashboard-landing-page-screenshot.png)
+
+Saved Book Results
+![Saved Book Results](./client/public/user-books-screenshot.png)
+
+Update Account
+![Update Account](./client/public/update-account-screenshot.png)
+
+
+## Server-Side Details
+
+### Database Schema
 
 The database schema for the server code is defined by the Sequelize ORM (Object-Relational Mapping) library, which maps the JavaScript objects to database tables and their attributes to columns.
 
@@ -20,7 +98,7 @@ The database schema consists of a single table named `users`, which has the foll
 
 The data type of each column is defined using the Sequelize library's DataTypes module, which provides a set of data types that can be used to define the schema. The schema is defined in the `models` directory of the server code, specifically in the `users.js` file.
 
-## Tech Stack
+### Tech Stack
 
 The tech stack used in the server-side code of the Page_By_Page project can be found in the `package.json` file. The file lists all the dependencies required to run the server and build the application.
 
@@ -39,7 +117,7 @@ Other dependencies used in the project include:
 
 Overall, the tech stack used in the server-side code of the Page_By_Page project is well-suited for building a robust, scalable, and secure web application.
 
-## API Endpoints
+### API Endpoints
 
 This code starts the Express server and listens for incoming requests on the specified `PORT`. The `app.listen()` method takes two arguments: the `PORT` number and a callback function that will be executed once the server starts listening on the specified port. The callback function logs a message to the console indicating that the server is listening on the specified port. It then attempts to authenticate the database connection using Sequelize's `authenticate()` method. If the authentication is successful, the function logs a message to the console indicating that the connection has been established successfully. This means that the server can communicate with the database and perform operations on it. If the authentication fails, the function logs an error message to the console indicating that the server was unable to connect to the database. This could be due to an incorrect database configuration or network issues. Overall, this code initializes the Express server, sets it to listen on a specified port, and verifies that it can connect to the database. This is an important step in ensuring that the application is functioning properly and is able to access and manipulate the data stored in the database.
 
@@ -184,7 +262,6 @@ app.put("/api/tbr/remove", async (req, res) => {
 });
 ```
 
-## Contributing
+### Contributing
 
 If you would like to contribute to this repository, please fork the repository, make your changes, and submit a pull request.
-

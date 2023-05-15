@@ -1,5 +1,5 @@
 const express = require("express");
-const cors = require("cors")
+const cors = require("cors");
 const bcrypt = require("bcryptjs");
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -11,7 +11,7 @@ const sequelize = new Sequelize(`${db}`);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.options('*', cors())
+app.options("*", cors());
 
 //* GET Routes
 app.get("/api/user", async (req, res) => {
@@ -22,9 +22,14 @@ app.get("/api/user", async (req, res) => {
         id: userID,
       },
     });
-    let userInfo = []
-    userInfo.push(userLoggedIn.username, userLoggedIn.firstName, userLoggedIn.lastName, userLoggedIn.email)
-    res.json(userInfo)
+    let userInfo = [];
+    userInfo.push(
+      userLoggedIn.username,
+      userLoggedIn.firstName,
+      userLoggedIn.lastName,
+      userLoggedIn.email
+    );
+    res.json(userInfo);
   } catch (error) {
     console.log(error);
   }
@@ -94,15 +99,15 @@ app.post("/api/login", async (req, res) => {
   try {
     let { email, password } = req.body;
     let user = await users.findOne({ where: { email: email } });
-    if(user !== null)
-    {
-    let result = bcrypt.compareSync(password, user.password);
-    if (result) {
-      let userID = user.dataValues.id;
-      res.send({ id: userID });
-    } else {
-      res.json("Unable to login.");
-    }}
+    if (user !== null) {
+      let result = bcrypt.compareSync(password, user.password);
+      if (result) {
+        let userID = user.dataValues.id;
+        res.send({ id: userID });
+      } else {
+        res.json("Unable to login.");
+      }
+    }
   } catch (error) {
     console.log(error);
     res.json(error);
@@ -117,26 +122,25 @@ app.put("/api/userUpdate", async (req, res) => {
   let updatedLastName = req.body.lastName;
   let updatedEmail = req.body.email;
   let updatedPassword = req.body.password;
-  updatedPassword = bcrypt.hashSync(updatedPassword, 8)
+  updatedPassword = bcrypt.hashSync(updatedPassword, 8);
   try {
     let updatedAccount = await users.update(
-    {
-      username: updatedUsername,
-      firstName: updatedFirstName,
-      lastName: updatedLastName,
-      email: updatedEmail,
-      password: updatedPassword,
-    },
-    {
-      where: {
-        id: userIDs,
+      {
+        username: updatedUsername,
+        firstName: updatedFirstName,
+        lastName: updatedLastName,
+        email: updatedEmail,
+        password: updatedPassword,
       },
-    }
-  );
-  res.send(updatedAccount)
-  }
-  catch(error){
-    console.log(error)
+      {
+        where: {
+          id: userIDs,
+        },
+      }
+    );
+    res.send(updatedAccount);
+  } catch (error) {
+    console.log(error);
   }
 });
 

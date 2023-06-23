@@ -2,7 +2,7 @@
 
 ## Client-Side Details
 
-Page By Page is a web application that is designed to allow you to search for books and create a personalized bookshelf. Customize your profile by adding books to the TBR (To Be Read), Read, or Favorites bookshelf. From your bookshelves, you can click to preview the selected book on Google Books. The application is built using JavaScript, HTML, and CSS. Access the site [here](https://main.d2sh501brp4jaq.amplifyapp.com/)!
+Page By Page is a web application that is designed to allow you to search for books and create a personalized bookshelf. Customize your profile by adding books to the TBR (To Be Read), Read, or Favorites bookshelf. From your bookshelves, you can click to preview the selected book on Google Books. The application is built using JavaScript, HTML, and CSS. Access the site [here](https://page-by-page.vercel.app/)!
 
 ### Tech Stack
 
